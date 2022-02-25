@@ -53,7 +53,11 @@ draw.rectangle(
 font = ImageFont.load_default()
 
 # Draw Some Text
-text = """L\n    E\n        M"""
+#text = """L\n    E\n        M"""
+
+patches = ['reverb', 'delay', 'chorus']
+text = '\n'.join(patches)
+
 font_width, font_height = font.getsize(text)
 draw.text(
     (oled.width // 1.5 - font_width // 2, oled.height // 4 - font_height // 2),
