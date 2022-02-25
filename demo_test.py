@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 """
 This demo will fill the screen with white, draw a black box on top
 and then print Hello World! in the center of the display
@@ -18,8 +20,8 @@ oled_reset = digitalio.DigitalInOut(board.D4)
 # Change these
 # to the right size for your display!
 WIDTH = 128
-HEIGHT = 32  # Change to 64 if needed
-BORDER = 5
+HEIGHT = 64  # Change to 64 if needed
+BORDER = 2
 
 # Use for I2C.
 i2c = board.I2C()
@@ -51,10 +53,10 @@ draw.rectangle(
 font = ImageFont.load_default()
 
 # Draw Some Text
-text = "Hello World!"
+text = """L\n    E\n        M"""
 font_width, font_height = font.getsize(text)
 draw.text(
-    (oled.width // 2 - font_width // 2, oled.height // 2 - font_height // 2),
+    (oled.width // 1.5 - font_width // 2, oled.height // 4 - font_height // 2),
     text,
     font=font,
     fill=255,
