@@ -21,7 +21,7 @@ oled_reset = digitalio.DigitalInOut(board.D4)
 # to the right size for your display!
 WIDTH = 128
 HEIGHT = 64  # Change to 64 if needed
-BORDER = 2
+BORDER = 0
 
 # Use for I2C.
 i2c = board.I2C()
@@ -40,27 +40,28 @@ image = Image.new("1", (oled.width, oled.height))
 draw = ImageDraw.Draw(image)
 
 # Draw a white background
-draw.rectangle((0, 0, oled.width, oled.height), outline=255, fill=255)
+#draw.rectangle((0, 0, oled.width, oled.height), outline=255, fill=255)
 
 # Draw a smaller inner rectangle
-draw.rectangle(
-    (BORDER, BORDER, oled.width - BORDER - 1, oled.height - BORDER - 1),
-    outline=0,
-    fill=0,
-)
+#draw.rectangle(
+#    (BORDER, BORDER, oled.width - BORDER - 1, oled.height - BORDER - 1),
+#    outline=0,
+#    fill=0,
+#)
 
 # Load default font.
-font = ImageFont.load_default()
-
+#font = ImageFont.load("arial.pil")
+font = ImageFont.truetype("arial.ttf",9)
 # Draw Some Text
 #text = """L\n    E\n        M"""
 
-patches = ['reverb', 'delay', 'chorus']
+patches = ['reverb', 'delay', 'chorus', 'looper', 'flanger']
 text = '\n'.join(patches)
 
 font_width, font_height = font.getsize(text)
 draw.text(
-    (oled.width // 1.5 - font_width // 2, oled.height // 4 - font_height // 2),
+    #(oled.width // 2- font_width // 2, oled.height // 8 - font_height // 2),
+    (5,0),
     text,
     font=font,
     fill=255,
