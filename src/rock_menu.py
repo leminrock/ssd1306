@@ -1,0 +1,33 @@
+#!/usr/bin/env python3
+
+import os
+import networkx as nx
+from rock_entities import Item, Page
+
+# pages
+MAINMENU = Item('ROOT', 0)
+HOTSPOT = Item('HOTSPOT', 1)
+PATCHES = Item('PATCHES', 1)
+
+# HOTSPOT items
+ACTIVATE = Item('ACTIVATE', 2)
+DEACTIVATE = Item('DEACTIVATE', 2)
+
+# patch path
+PATCHESPATH = '../../patches'
+
+# build graph
+
+G = nx.DiGraph()
+
+for _,_,files in os.walk(PATCHESPATH):
+    for file in sorted(files):
+        patch = Item(file, 2)
+        G.add_edge(PATCHES, patch)
+
+G.add_edges_from([(MAINMENU, HOTSPOT),(MAINMENU, PATCHES)])
+G.add_edges_from([(HOTSPOT, ACTIVATE),(HOTSPOT, DEACTIVATE)])
+
+def get_page(graph, node):
+    return list(graph.successors(node))
+

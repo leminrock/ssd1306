@@ -1,26 +1,49 @@
+# pylint: disable=missing-function-docstring
 #!/usr/bin/env python3
 
 import os
 import networkx as nx
 
-G = nx.DiGraph()
-
-class Item:
-    def __init__(self, name, level):
-        self._name = name
-        self._level = level
-
-MAINMENU = 'root'
-
-# main menu items
-
+# pages
+MAINMENU = 'ROOT'
 HOTSPOT = 'HOTSPOT'
 PATCHES = 'PATCHES'
 
 # HOTSPOT items
-
 ACTIVATE = 'ACTIVATE'
 DEACTIVATE = 'DEACTIVATE'
+
+
+G = nx.DiGraph()
+
+class Item:
+    """item class"""
+    def __init__(self, name, level):
+        self._name = name
+        self._level = level
+
+    @property
+    def name(self):
+        return self._name
+
+    @property
+    def level(self):
+        return self._level
+
+
+class Page:
+    def __init__(self, name):
+        self._name = name 
+        self._level = level
+
+    @property
+    def name(self):
+        return self._name
+    
+    @property
+    def level(self):
+        return self._level
+
 
 # PATCHES items
 
