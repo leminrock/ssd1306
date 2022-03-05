@@ -27,13 +27,13 @@ class Item:
 
 
 class Page:
-    """build page of items"""
+    """page of items"""
 
     def __init__(self, name: str) -> None:
         self._name = name
         self._items = []
 
-    def append_item(self, item: Item) -> None:
+    def append(self, item: Item) -> None:
         """append item"""
         self._items.append(item)
 
@@ -41,3 +41,12 @@ class Page:
     def name(self) -> str:
         """return name of Item"""
         return self._name
+
+    def get_item(self, n_ord: int) -> Item:
+        return self._items[n_ord]
+
+    def get_items(self) -> list:
+        return self._items
+
+    def get_item_names(self) -> list:
+        return [x.name for x in self._items]
