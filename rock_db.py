@@ -23,13 +23,13 @@ cur.execute("""CREATE TABLE item(
     parent INTEGER NULL,
     created_at TEXT NOT NULL)""")
 
-cur.execute(f"""INSERT INTO page 
+cur.execute(f"""INSERT INTO page
     VALUES 
         (NULL, 'main', 0, '{get_now()}'),
         (NULL, 'hotspot', 1, '{get_now()}'),
         (NULL, 'patches', 1, '{get_now()}')""")
 
-cur.execute(f"""INSERT INTO item 
+cur.execute(f"""INSERT INTO item
     VALUES
         (NULL, 'hotspot', 2, NULL, '{get_now()}'),
         (NULL, 'patches', 3, NULL, '{get_now()}') 
