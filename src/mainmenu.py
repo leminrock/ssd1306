@@ -27,8 +27,6 @@ if __name__ == '__main__':
 
     encoder.encode(PIN1, PIN2)
     encoder.isr(rotary_routine)
-    #pin1.isr(mraa.EDGE_BOTH, rotary_routine, pin1)
-    #pin2.isr(mraa.EDGE_BOTH, rotary_routine, pin2)
     pin3.isr(mraa.EDGE_RISING, button_routine, pin3)
 
     pos = 0
@@ -39,7 +37,8 @@ if __name__ == '__main__':
         new_pos = encoder._enc.get_position()
         if pos != new_pos:
             #print(f"pos: {new_pos}\tdir: {int(encoder._enc.get_direction())}")
-            direction = encoder._enc.get_direction()
+            #direction = encoder._enc.get_direction()
+            direction = encoder.direction
             menu_item = min(4, max(0, menu_item + direction))
             print(menu_item)
             pos = new_pos

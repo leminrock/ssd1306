@@ -1,6 +1,7 @@
 import mraa
 import rotary_encoder as renc
 
+
 class EncoderEC11:
     def __init__(self):
         self._enc = None
@@ -8,6 +9,10 @@ class EncoderEC11:
     @property
     def enc(self):
         return self._enc
+
+    @property
+    def direction(self):
+        return self._enc.get_direction()
 
     def encode(self, p1, p2):
         self.pin1 = mraa.Gpio(p1)
@@ -23,5 +28,3 @@ class EncoderEC11:
     def isr(self, routine):
         self.pin1.isr(mraa.EDGE_BOTH, routine, self.pin1)
         self.pin2.isr(mraa.EDGE_BOTH, routine, self.pin2)
-
-
