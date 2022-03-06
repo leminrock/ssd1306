@@ -31,6 +31,8 @@ if __name__ == '__main__':
     hostspotmenu.populate(rmenu.get_names(rmenu.Graph, rmenu.HOTSPOT))
     patchesmenu.populate(rmenu.get_names(rmenu.Graph, rmenu.PATCHES))
 
+    mainmenu.draw()
+
     while True:
         ref = encoder.refresh()
         if ref:

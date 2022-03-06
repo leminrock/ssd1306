@@ -1,3 +1,6 @@
+import rock_oled as roled
+
+
 class Pager:
     def __init__(self):
         self._length = 0
@@ -9,3 +12,6 @@ class Pager:
 
     def append(self, item):
         pass
+
+    def draw(self):
+        roled.drawmenu(self._items, 0)
