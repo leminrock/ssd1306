@@ -31,10 +31,15 @@ if __name__ == '__main__':
     hostspotmenu.populate(rmenu.get_names(rmenu.Graph, rmenu.HOTSPOT))
     patchesmenu.populate(rmenu.get_names(rmenu.Graph, rmenu.PATCHES))
 
-    mainmenu.draw()
+    # mainmenu.draw()
+    #current_page = mainmenu
+
+    hostspotmenu.draw()
+    current_page = hostspotmenu
 
     while True:
         direction = encoder.refresh()
+
         if direction:
-            mainmenu.update(direction)
+            current_page.update(direction)
             print(direction)
