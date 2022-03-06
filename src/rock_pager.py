@@ -20,5 +20,5 @@ class Pager:
             self.draw(newpos)
             self._pos = newpos
 
-    def draw(self, selected=0, drawback=False):
-        roled.drawmenu(self._items, selected, drawback)
+    def draw(self, selected=0):
+        roled.drawmenu(self._items, selected)

@@ -34,6 +34,7 @@ if __name__ == '__main__':
     mainmenu.draw()
 
     while True:
-        new_value = encoder.refresh()
-        if new_value:
-            print(new_value)
+        direction = encoder.refresh()
+        if direction:
+            mainmenu.update(direction)
+            print(direction)
