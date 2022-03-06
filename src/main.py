@@ -25,7 +25,12 @@ def button_routine(gpio):
     sel = current_page.get_selected()
     if not sel.is_leave():
         current_page = rpager.populate(rmenu.get_nodes(rmenu.Graph, sel))
-        current_page.draw()
+        back = False
+
+        if sel.is_child():
+            back = True
+
+        current_page.draw(title=sel.name, drawback=back)
     else:
         print(sel.path)
 

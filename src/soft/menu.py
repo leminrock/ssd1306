@@ -46,3 +46,7 @@ def get_back(graph, node):
 
 def is_leave(graph, node):
     return len(graph.out_edges(node)) == 0
+
+
+def is_child(graph, node):
+    return len(graph.in_edgeges(node)) > 0
