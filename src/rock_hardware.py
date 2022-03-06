@@ -14,6 +14,10 @@ class EncoderEC11:
     def direction(self):
         return self._enc.get_direction()
 
+    @property
+    def position(self):
+        return self._enc.get_position()
+
     def encode(self, p1, p2):
         self.pin1 = mraa.Gpio(p1)
         self.pin2 = mraa.Gpio(p2)

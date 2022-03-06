@@ -24,11 +24,10 @@ def button_routine(gpio):
 if __name__ == '__main__':
     pin3 = mraa.Gpio(PIN3)
     pin3.dir(mraa.DIR_IN)
-
-    encoder.encode(PIN1, PIN2)
-    # encoder.isr(rotary_routine)
-    encoder.isr()
     pin3.isr(mraa.EDGE_RISING, button_routine, pin3)
+    
+    encoder.encode(PIN1, PIN2)
+    encoder.isr()
 
     pos = 0
     menu_item = 0
