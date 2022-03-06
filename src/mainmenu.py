@@ -33,13 +33,4 @@ if __name__ == '__main__':
     menu_item = 0
 
     while True:
-        """
-        encoder.tick()
-        new_pos = encoder.position
-        if pos != new_pos:
-            direction = encoder.direction
-            menu_item = min(4, max(0, menu_item + direction))
-            print(menu_item)
-            pos = new_pos
-        """
         encoder.refresh()

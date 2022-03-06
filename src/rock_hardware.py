@@ -32,8 +32,8 @@ class EncoderEC11:
         self._enc.tick()
 
     def isr(self):
-        self.pin1.isr(mraa.EDGE_BOTH, self.routine, self.pin1)
-        self.pin2.isr(mraa.EDGE_BOTH, self.routine, self.pin2)
+        self.pin1.isr(mraa.EDGE_BOTH, self._enc.tick, self.pin1)
+        self.pin2.isr(mraa.EDGE_BOTH, self._enc.tick, self.pin2)
 
     def refresh(self):
         self._enc.tick()
