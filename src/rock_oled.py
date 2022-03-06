@@ -50,5 +50,3 @@ def drawskeleton(draw, title):
     draw.text((RIGHT - size[0], DOWN - size[1]), text, font=font, fill='white')
 
 
-drawmenu(['HOTPOST', 'PATCHES'], 0)
-input('premi un tasto')
