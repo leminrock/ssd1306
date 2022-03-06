@@ -32,11 +32,7 @@ def drawmenu(items, selected=None):
         drawskeleton(draw, 'main menu')
 
         for n, item in enumerate(items):
-            if selected == n:
-                filler = 'black'
-            else:
-                filler = 'white'
-
+            filler = _get_filler(selected, n)
             draw.text((0, n * STEP + OFFSET), item, font=font, fill=filler)
 
 
@@ -50,3 +46,7 @@ def drawskeleton(draw, title, drawback=False):
     if drawback:
         draw.text((RIGHT - size[0], DOWN - size[1]),
                   text, font=font, fill='white')
+
+
+def _get_filler(selected, n):
+    return selected == n ? 'black': 'white'
