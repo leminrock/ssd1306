@@ -6,15 +6,16 @@ from luma.core.render import canvas
 from luma.oled.device import ssd1306
 from PIL import ImageFont
 
-STEP = int(64 / 7)
+WIDTH = 128
+HEIGHT = 64
+STEP = int(HEIGHT / 7)
 LEFT = 0
-RIGHT = 127
+RIGHT = WIDTH - 1
 TOP = 0
-DOWN = 63
+DOWN = HEIGHT - 1
 OFFSET = STEP * 2
-
-serial = i2c(port=1, address=0x3C)
-DEVICE = ssd1306(serial)
+SERIAL = i2c(port=1, address=0x3C)
+DEVICE = ssd1306(SERIAL)
 PATHFONT = '../arial.ttf'
 
 font = ImageFont.truetype(PATHFONT, STEP)
@@ -25,11 +26,12 @@ def drawmenu(items, selected=None):
         filler = 'white'
 
         if selected is not None:
-            draw.rectangle((LEFT, selected * STEP + OFFSET, RIGHT, (selected + 1) * STEP + OFFSET), outline="white", fill="white")
-       
+            draw.rectangle((LEFT, selected * STEP + OFFSET, RIGHT,
+                            (selected + 1) * STEP + OFFSET), outline="white", fill="white")
+
         drawskeleton(draw, 'main menu')
 
-        for n,item in enumerate(items):
+        for n, item in enumerate(items):
             if selected == n:
                 filler = 'black'
             else:
@@ -43,9 +45,10 @@ def drawskeleton(draw, title):
     titlesize = font.getsize(title)
     size = font.getsize(text)
 
-    draw.text((int(RIGHT / 2 - titlesize[0] / 2), TOP), title, font=font, fill='white')
+    draw.text(
+        (int(RIGHT / 2 - titlesize[0] / 2), TOP), title, font=font, fill='white')
     draw.text((RIGHT - size[0], DOWN - size[1]), text, font=font, fill='white')
-    
 
-drawmenu(['HOTPOST', 'PATCHES'],0)
+
+drawmenu(['HOTPOST', 'PATCHES'], 0)
 input('premi un tasto')

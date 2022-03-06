@@ -18,16 +18,16 @@ PATCHESPATH = '../../patches'
 
 # build graph
 
-G = nx.DiGraph()
+Graph = nx.DiGraph()
 
-for _,_,files in os.walk(PATCHESPATH):
+for _, _, files in os.walk(PATCHESPATH):
     for file in sorted(files):
         patch = Item(file, 2)
-        G.add_edge(PATCHES, patch)
+        Graph.add_edge(PATCHES, patch)
 
-G.add_edges_from([(MAINMENU, HOTSPOT),(MAINMENU, PATCHES)])
-G.add_edges_from([(HOTSPOT, ACTIVATE),(HOTSPOT, DEACTIVATE)])
+Graph.add_edges_from([(MAINMENU, HOTSPOT), (MAINMENU, PATCHES)])
+Graph.add_edges_from([(HOTSPOT, ACTIVATE), (HOTSPOT, DEACTIVATE)])
+
 
 def get_page(graph, node):
     return list(graph.successors(node))
-

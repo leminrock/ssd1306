@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 
 import mraa
-import rock_menu as menu
 import rock_hardware as rhard
 import rotary_encoder as renc
+import rock_pager as rpager
+import rock_menu as rmenu
 
 PIN1 = 11
 PIN2 = 13
@@ -14,7 +15,7 @@ PIN4 = 8
 encoder = rhard.EncoderEC11()
 button1 = rhard.RockButton()
 button2 = rhard.RockButton()
-
+mainmenu = rpager.Pager()
 
 if __name__ == '__main__':
     button1.encode(PIN3)
@@ -26,6 +27,8 @@ if __name__ == '__main__':
 
     pos = 0
     menu_item = 0
+
+    print(rmenu.get_page(rmanu.MAINMENU))
 
     while True:
         ref = encoder.refresh()
