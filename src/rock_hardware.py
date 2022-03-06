@@ -36,12 +36,12 @@ class EncoderEC11:
         self.pin2.isr(mraa.EDGE_BOTH, self.routine, self.pin2)
 
     def refresh(self):
-        encoder.tick()
+        self._enc.tick()
         new_pos = self.position
         if self.old_position != new_pos:
             direction = self.direction
-            menu_item = min(4, max(0, menu_item + direction))
-            print(menu_item)
+            self.menu_item = min(4, max(0, self.menu_item + direction))
+            print(self.menu_item)
             self.old_position = new_pos
 
     @staticmethod
