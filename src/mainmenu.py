@@ -26,7 +26,8 @@ if __name__ == '__main__':
     pin3.dir(mraa.DIR_IN)
 
     encoder.encode(PIN1, PIN2)
-    encoder.isr(rotary_routine)
+    # encoder.isr(rotary_routine)
+    encoder.isr()
     pin3.isr(mraa.EDGE_RISING, button_routine, pin3)
 
     pos = 0
