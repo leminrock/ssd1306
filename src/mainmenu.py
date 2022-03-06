@@ -25,7 +25,7 @@ if __name__ == '__main__':
     pin3 = mraa.Gpio(PIN3)
     pin3.dir(mraa.DIR_IN)
     pin3.isr(mraa.EDGE_RISING, button_routine, pin3)
-    
+
     encoder.encode(PIN1, PIN2)
     encoder.isr()
 
@@ -34,7 +34,7 @@ if __name__ == '__main__':
 
     while True:
         encoder.tick()
-        new_pos = encoder._enc.get_position()
+        new_pos = encoder.position
         if pos != new_pos:
             #print(f"pos: {new_pos}\tdir: {int(encoder._enc.get_direction())}")
             #direction = encoder._enc.get_direction()
