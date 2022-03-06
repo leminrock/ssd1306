@@ -38,14 +38,12 @@ class EncoderEC11:
     def refresh(self):
         self._enc.tick()
         new_pos = self.position
+        
         if self.old_position != new_pos:
-            """
-            direction = self.direction
-            self.menu_item = min(4, max(0, self.menu_item + direction))
-            print(self.menu_item)
             self.old_position = new_pos
-            """
             return self.direction
+        
+        return None
 
     @staticmethod
     def routine(gpio):

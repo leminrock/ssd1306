@@ -33,4 +33,6 @@ if __name__ == '__main__':
     menu_item = 0
 
     while True:
-        encoder.refresh()
+        ref = encoder.refresh()
+        if ref:
+            print(ref)
