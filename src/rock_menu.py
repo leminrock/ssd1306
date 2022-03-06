@@ -31,3 +31,7 @@ Graph.add_edges_from([(HOTSPOT, ACTIVATE), (HOTSPOT, DEACTIVATE)])
 
 def get_page(graph, node):
     return list(graph.successors(node))
+
+
+def get_names(graph, node):
+    return [x.name for x in get_page(graph, node)]
