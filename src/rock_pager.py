@@ -26,4 +26,4 @@ class Pager:
 
     def get_selected(self):
         """get selected item"""
-        return self._items[self._pos].name
+        return self._items[self._pos]
