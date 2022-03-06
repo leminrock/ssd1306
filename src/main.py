@@ -21,7 +21,9 @@ patchesmenu = rpager.Pager()
 
 
 def button_routine(gpio):
+    global current_page
     sel = current_page.get_selected()
+    print("selected", sel)
     if sel == 'HOSTSPOT':
         current_page = hostspotmenu
     else:
