@@ -4,10 +4,12 @@ class Item:
     def __init__(self,
                  name,
                  level=None,
-                 back=False
+                 back=False,
                  path=None):
         self._name = name
         self._level = level
+        self._back = back
+        self._path = path
 
     @property
     def name(self):

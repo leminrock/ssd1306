@@ -42,3 +42,7 @@ def get_names(graph, node):
 def get_back(graph, node):
     pred = list(graph.predecessors(node))
     return pred[0]
+
+
+def is_leave(graph, node):
+    return len(graph.out_edges(node)) == 0

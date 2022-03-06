@@ -23,13 +23,11 @@ patchesmenu = rpager.Pager()
 def button_routine(gpio):
     global current_page
     sel = current_page.get_selected()
-
-    if sel == 'HOSTSPOT':
-        current_page = hostspotmenu
+    if not sel.is_leave():
+        current_page = rpager.populate(rmenu.get_nodes(rmenu.Graph, sel))
+        current_page.draw()
     else:
-        current_page = patchesmenu
-
-    current_page.draw()
+        print(sel.path)
 
 
 if __name__ == '__main__':
@@ -41,8 +39,8 @@ if __name__ == '__main__':
     encoder.isr()
 
     mainmenu.populate(rmenu.get_nodes(rmenu.Graph, rmenu.MAINMENU))
-    hostspotmenu.populate(rmenu.get_nodes(rmenu.Graph, rmenu.HOTSPOT))
-    patchesmenu.populate(rmenu.get_nodes(rmenu.Graph, rmenu.PATCHES))
+    #hostspotmenu.populate(rmenu.get_nodes(rmenu.Graph, rmenu.HOTSPOT))
+    #patchesmenu.populate(rmenu.get_nodes(rmenu.Graph, rmenu.PATCHES))
 
     mainmenu.draw()
     current_page = mainmenu
