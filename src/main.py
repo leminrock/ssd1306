@@ -34,6 +34,6 @@ if __name__ == '__main__':
     mainmenu.draw()
 
     while True:
-        ref = encoder.refresh()
-        if ref:
-            print(ref)
+        new_value = encoder.refresh()
+        if new_value:
+            print(new_value)

@@ -40,13 +40,13 @@ def drawmenu(items, selected=None):
             draw.text((0, n * STEP + OFFSET), item, font=font, fill=filler)
 
 
-def drawskeleton(draw, title):
+def drawskeleton(draw, title, drawback=False):
     text = 'back'
     titlesize = font.getsize(title)
     size = font.getsize(text)
 
     draw.text(
         (int(RIGHT / 2 - titlesize[0] / 2), TOP), title, font=font, fill='white')
-    draw.text((RIGHT - size[0], DOWN - size[1]), text, font=font, fill='white')
-
-
+    if drawback:
+        draw.text((RIGHT - size[0], DOWN - size[1]),
+                  text, font=font, fill='white')
