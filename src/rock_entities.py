@@ -4,8 +4,8 @@ class Item:
         self._name = name
         self._level = level
 
-    def __repr__(self):
-        return 'Item: ' + self._name 
+    #def __repr__(self):
+    #    return 'Item: ' + self._name 
 
     @property
     def name(self):
@@ -21,8 +21,8 @@ class Page:
         self._name = name 
         self._level = level
 
-    def __repr__(self):
-        return 'Page: ' + self._name
+    #def __repr__(self):
+    #    return 'Page: ' + self._name
 
     @property
     def name(self):

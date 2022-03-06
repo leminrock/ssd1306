@@ -27,8 +27,9 @@ if __name__ == '__main__':
 
     pos = 0
     menu_item = 0
-
-    print(rmenu.get_page(rmanu.MAINMENU))
+    
+    mainmenu.populate(rmenu.get_page(rmenu.Graph, rmenu.MAINMENU))
+    print(mainmenu._items)
 
     while True:
         ref = encoder.refresh()
