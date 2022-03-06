@@ -5,6 +5,8 @@ import rotary_encoder as renc
 class EncoderEC11:
     def __init__(self):
         self._enc = None
+        self.old_position = 0
+        self.menu_item = 0
 
     @property
     def enc(self):
@@ -32,6 +34,15 @@ class EncoderEC11:
     def isr(self):
         self.pin1.isr(mraa.EDGE_BOTH, self.routine, self.pin1)
         self.pin2.isr(mraa.EDGE_BOTH, self.routine, self.pin2)
+
+    def refresh(self):
+        encoder.tick()
+        new_pos = self.position
+        if self.old_position != new_pos:
+            direction = self.direction
+            menu_item = min(4, max(0, menu_item + direction))
+            print(menu_item)
+            self.old_position = new_pos
 
     @staticmethod
     def routine(gpio):
