@@ -62,4 +62,4 @@ class RockButton:
 
     @staticmethod
     def routine(gpio):
-        print('released')
+        print('released', gpio.getPin(True))

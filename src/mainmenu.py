@@ -7,11 +7,13 @@ import rotary_encoder as renc
 
 PIN1 = 11
 PIN2 = 13
-PIN3 = 8
+PIN3 = 10
+PIN4 = 8
 
 
 encoder = rhard.EncoderEC11()
-button = rhard.RockButton()
+button1 = rhard.RockButton()
+button2 = rhard.RockButton()
 
 
 def rotary_routine(gpio):
@@ -23,13 +25,10 @@ def button_routine(gpio):
 
 
 if __name__ == '__main__':
-    """
-    pin3 = mraa.Gpio(PIN3)
-    pin3.dir(mraa.DIR_IN)
-    pin3.isr(mraa.EDGE_RISING, button_routine, pin3)
-    """
-    button.encode(PIN3)
-    button.isr()
+    button1.encode(PIN3)
+    button1.isr()
+    button2.encode(PIN3)
+    button2.isr()
     encoder.encode(PIN1, PIN2)
     encoder.isr()
 
