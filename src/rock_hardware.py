@@ -1,5 +1,5 @@
 import mraa
-
+import rotary_encoder as renc
 
 class EncoderEC11:
     def __init__(self):
@@ -20,9 +20,8 @@ class EncoderEC11:
     def tick(self):
         self._enc.tick()
 
-    def isr(self, func):
-        self.pin1.isr(mraa.EDGE_BOTH, rotary_routine, self.pin1)
-        self.pin2.isr(mraa.EDGE_BOTH, rotary_routine, self.pin2)
+    def isr(self, routine):
+        self.pin1.isr(mraa.EDGE_BOTH, routine, self.pin1)
+        self.pin2.isr(mraa.EDGE_BOTH, routine, self.pin2)
 
 
-def rotary_routine(gpio):

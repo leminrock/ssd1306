@@ -10,7 +10,7 @@ PIN2 = 13
 PIN3 = 8
 
 
-encoder = rh.EncoderEC11()
+encoder = rhard.EncoderEC11()
 
 
 def rotary_routine(gpio):
