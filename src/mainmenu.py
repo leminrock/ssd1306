@@ -13,8 +13,11 @@ class Encoder:
     def __init__(self):
         self._enc = None
 
-    @enc.setter
-    def enc(self, p1, p2):
+    @property
+    def enc(self):
+        return self._enc
+
+    def encode(self, p1, p2):
         self._enc = renc.RotaryEncoder(p1, p2, renc.LATCHMODE['FOUR3'])
 
     def tick(self):
@@ -29,7 +32,7 @@ def rotary_routine(gpio):
 
 
 def button_routine(gpio):
-    pass
+    print('released')
 
 
 if __name__ == '__main__':
@@ -40,17 +43,21 @@ if __name__ == '__main__':
     pin2.dir(mraa.DIR_IN)
     pin3.dir(mraa.DIR_IN)
 
-    encoder.enc(pin1, pin2)
+    encoder.encode(pin1, pin2)
 
     pin1.isr(mraa.EDGE_BOTH, rotary_routine, pin1)
     pin2.isr(mraa.EDGE_BOTH, rotary_routine, pin2)
     pin3.isr(mraa.EDGE_RISING, button_routine, pin3)
 
     pos = 0
+    menu_item = 0
 
     while True:
         encoder.tick()
-        nes_pos = encoder._enc.get_position()
+        new_pos = encoder._enc.get_position()
         if pos != new_pos:
-            print(f"pos: {new_pos}\tdir: {int(enc._enc.get_direction())}")
+            #print(f"pos: {new_pos}\tdir: {int(encoder._enc.get_direction())}")
+            direction = encoder._enc.get_direction()
+            menu_item = min (4, max(0, menu_item + direction))
+            print(menu_item)
             pos = new_pos
