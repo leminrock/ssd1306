@@ -2,7 +2,7 @@
 
 import os
 import networkx as nx
-from soft.entities import Item, Page
+from soft.entities import Item
 
 # pages
 MAINMENU = Item('ROOT', 0, back=None)
