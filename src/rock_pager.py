@@ -22,3 +22,7 @@ class Pager:
 
     def draw(self, selected=0):
         roled.drawmenu(self._items, selected)
+
+    def get_selected(self):
+        """get selected item"""
+        return self._items[self._pos]

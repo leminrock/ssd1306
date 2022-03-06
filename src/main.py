@@ -21,14 +21,15 @@ patchesmenu = rpager.Pager()
 
 
 def button_routine(gpio):
-    print('released', gpio.getPin(True))
-
+    #print('released', gpio.getPin(True))
+    #print('released', gpio)
+    print(current_page.get_selected())
 
 if __name__ == '__main__':
     button1.encode(PIN3)
-    button1.isr()
+    button1.isr(button_routine)
     button2.encode(PIN4)
-    button2.isr()
+    button2.isr(button_routine)
     encoder.encode(PIN1, PIN2)
     encoder.isr()
 
@@ -36,11 +37,11 @@ if __name__ == '__main__':
     hostspotmenu.populate(rmenu.get_names(rmenu.Graph, rmenu.HOTSPOT))
     patchesmenu.populate(rmenu.get_names(rmenu.Graph, rmenu.PATCHES))
 
-    # mainmenu.draw()
-    #current_page = mainmenu
+    mainmenu.draw()
+    current_page = mainmenu
 
-    hostspotmenu.draw()
-    current_page = hostspotmenu
+    #hostspotmenu.draw()
+    #current_page = hostspotmenu
 
     while True:
         direction = encoder.refresh()
