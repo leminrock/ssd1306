@@ -1,4 +1,4 @@
-import rock_oled as roled
+from hardware import oled as roled
 
 
 class Pager:

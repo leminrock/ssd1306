@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 
 import mraa
-from hardware import hardware as rhard
-import rotary_encoder as renc
 import rock_pager as rpager
 import rock_menu as rmenu
+from hardware import hardware as rhard
+from hardware import rotary_encoder as renc
 
 PIN1 = 11
 PIN2 = 13
