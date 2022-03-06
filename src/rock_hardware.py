@@ -62,9 +62,5 @@ class RockButton:
     def n_pin(self):
         return self._pin
 
-    def isr(self):
-        self.pin.isr(mraa.EDGE_RISING, self.b_routine, self.n_pin)
-
-    @staticmethod
-    def b_routine(gpio):
-        print(gpio)
+    def isr(self, routine):
+        self.pin.isr(mraa.EDGE_RISING, routine, self.n_pin)

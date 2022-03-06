@@ -19,6 +19,11 @@ mainmenu = rpager.Pager()
 hostspotmenu = rpager.Pager()
 patchesmenu = rpager.Pager()
 
+
+def button_routine(gpio):
+    print('released', gpio.getPin(True))
+
+
 if __name__ == '__main__':
     button1.encode(PIN3)
     button1.isr()
