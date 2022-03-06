@@ -1,5 +1,5 @@
 import mraa
-import rotary_encoder as renc
+from hardware import rotary_encoder as renc
 
 
 class EncoderEC11:
