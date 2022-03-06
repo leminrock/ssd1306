@@ -1,4 +1,4 @@
-from hardware import oled as roled
+from hard import oled as roled
 
 
 class Pager:
