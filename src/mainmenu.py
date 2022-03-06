@@ -16,18 +16,10 @@ button1 = rhard.RockButton()
 button2 = rhard.RockButton()
 
 
-def rotary_routine(gpio):
-    encoder.tick()
-
-
-def button_routine(gpio):
-    print('released')
-
-
 if __name__ == '__main__':
     button1.encode(PIN3)
     button1.isr()
-    button2.encode(PIN3)
+    button2.encode(PIN4)
     button2.isr()
     encoder.encode(PIN1, PIN2)
     encoder.isr()

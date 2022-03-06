@@ -31,11 +31,11 @@ class EncoderEC11:
         self._enc.tick()
 
     def isr(self):
-        self.pin1.isr(mraa.EDGE_BOTH, self.routine, self.pin1)
-        self.pin2.isr(mraa.EDGE_BOTH, self.routine, self.pin2)
+        self.pin1.isr(mraa.EDGE_BOTH, self.routine, self._enc)
+        self.pin2.isr(mraa.EDGE_BOTH, self.routine, self._enc)
 
     def refresh(self):
-        self._enc.tick()
+        self.tick()
         new_pos = self.position
 
         if self.old_position != new_pos:
@@ -45,8 +45,8 @@ class EncoderEC11:
         return None
 
     @staticmethod
-    def routine(gpio):
-        self._enc.tick()
+    def routine(args):
+        args.tick()
 
 
 class RockButton:
@@ -54,12 +54,17 @@ class RockButton:
         pass
 
     def encode(self, pin):
+        self._pin = pin
         self.pin = mraa.Gpio(pin)
         self.pin.dir(mraa.DIR_IN)
 
+    @property
+    def n_pin(self):
+        return self._pin
+
     def isr(self):
-        self.pin.isr(mraa.EDGE_RISING, self.routine, self.pin)
+        self.pin.isr(mraa.EDGE_RISING, self.b_routine, self.n_pin)
 
     @staticmethod
-    def routine(gpio):
-        print('released', gpio.getPin(True))
+    def b_routine(gpio):
+        print(gpio)
