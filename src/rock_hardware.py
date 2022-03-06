@@ -25,9 +25,9 @@ class EncoderEC11:
     def tick(self):
         self._enc.tick()
 
-    def isr(self, routine):
-        self.pin1.isr(mraa.EDGE_BOTH, routine, self.pin1)
-        self.pin2.isr(mraa.EDGE_BOTH, routine, self.pin2)
+    def isr(self):
+        self.pin1.isr(mraa.EDGE_BOTH, self.routine, self.pin1)
+        self.pin2.isr(mraa.EDGE_BOTH, self.routine, self.pin2)
 
     @staticmethod
     def routine(gpio):
