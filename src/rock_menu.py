@@ -29,12 +29,12 @@ Graph.add_edges_from([(MAINMENU, HOTSPOT), (MAINMENU, PATCHES)])
 Graph.add_edges_from([(HOTSPOT, ACTIVATE), (HOTSPOT, DEACTIVATE)])
 
 
-def get_page(graph, node):
+def get_nodes(graph, node):
     return list(graph.successors(node))
 
 
 def get_names(graph, node):
-    return [x.name for x in get_page(graph, node)]
+    return [x.name for x in get_nodes(graph, node)]
 
 
 def get_back(graph, node):

@@ -3,6 +3,7 @@ import rock_oled as roled
 
 class Pager:
     def __init__(self):
+        self._name = name
         self._pos = 0
         self._length = 0
         self._items = []
@@ -25,4 +26,4 @@ class Pager:
 
     def get_selected(self):
         """get selected item"""
-        return self._items[self._pos]
+        return self._items[self._pos].name
