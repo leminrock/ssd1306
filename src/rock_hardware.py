@@ -6,7 +6,6 @@ class EncoderEC11:
     def __init__(self):
         self._enc = None
         self.old_position = 0
-        self.menu_item = 0
 
     @property
     def enc(self):
@@ -38,13 +37,29 @@ class EncoderEC11:
     def refresh(self):
         self._enc.tick()
         new_pos = self.position
-        
+
         if self.old_position != new_pos:
             self.old_position = new_pos
             return self.direction
-        
+
         return None
 
     @staticmethod
     def routine(gpio):
         self._enc.tick()
+
+
+class RockButton:
+    def __init__(self):
+        pass
+
+    def encode(self, pin):
+        self.pin = mraa.Gpio(pin)
+        self.pin.dir(mraa.DIR_IN)
+
+    def isr(self):
+        self.pin.isr(mraa.EDGE_RISING, self.routine, self.pin)
+
+    @staticmethod
+    def routine(gpio):
+        print('released')

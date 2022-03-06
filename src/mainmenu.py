@@ -11,6 +11,7 @@ PIN3 = 8
 
 
 encoder = rhard.EncoderEC11()
+button = rhard.RockButton()
 
 
 def rotary_routine(gpio):
@@ -22,10 +23,13 @@ def button_routine(gpio):
 
 
 if __name__ == '__main__':
+    """
     pin3 = mraa.Gpio(PIN3)
     pin3.dir(mraa.DIR_IN)
     pin3.isr(mraa.EDGE_RISING, button_routine, pin3)
-
+    """
+    button.encode(PIN3)
+    button.isr()
     encoder.encode(PIN1, PIN2)
     encoder.isr()
 
