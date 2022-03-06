@@ -21,15 +21,19 @@ PATHFONT = '../arial.ttf'
 font = ImageFont.truetype(PATHFONT, STEP)
 
 
-def drawmenu(items, selected=None):
+def drawmenu(items, selected=None, title='main menu', drawback=False):
     with canvas(DEVICE) as draw:
         filler = 'white'
 
         if selected is not None:
-            draw.rectangle((LEFT, selected * STEP + OFFSET, RIGHT,
-                            (selected + 1) * STEP + OFFSET), outline="white", fill="white")
+            draw.rectangle((
+                LEFT,
+                selected * STEP + OFFSET,
+                RIGHT,
+                (selected + 1) * STEP + OFFSET),
+                outline="white", fill="white")
 
-        drawskeleton(draw, 'main menu')
+        drawskeleton(draw, 'main menu', drawback)
 
         for n, item in enumerate(items):
             filler = _get_filler(selected, n)
