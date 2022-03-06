@@ -3,7 +3,6 @@ import rock_oled as roled
 
 class Pager:
     def __init__(self):
-        self._name = name
         self._pos = 0
         self._length = 0
         self._items = []
@@ -22,7 +21,8 @@ class Pager:
             self._pos = newpos
 
     def draw(self, selected=0):
-        roled.drawmenu(self._items, selected)
+        items = [x.name for x in self._items]
+        roled.drawmenu(items, selected)
 
     def get_selected(self):
         """get selected item"""
