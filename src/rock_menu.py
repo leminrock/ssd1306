@@ -35,3 +35,8 @@ def get_page(graph, node):
 
 def get_names(graph, node):
     return [x.name for x in get_page(graph, node)]
+
+
+def get_back(graph, node)
+    pred = list(graph.predecessors(node))
+    return pred[0]

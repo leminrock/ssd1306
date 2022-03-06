@@ -27,15 +27,9 @@ if __name__ == '__main__':
     encoder.encode(PIN1, PIN2)
     encoder.isr()
 
-    pos = 0
-    menu_item = 0
-
     mainmenu.populate(rmenu.get_names(rmenu.Graph, rmenu.MAINMENU))
     hostspotmenu.populate(rmenu.get_names(rmenu.Graph, rmenu.HOTSPOT))
     patchesmenu.populate(rmenu.get_names(rmenu.Graph, rmenu.PATCHES))
-    print(mainmenu._items)
-    print(hostspotmenu._items)
-    print(patchesmenu._items)
 
     while True:
         ref = encoder.refresh()
