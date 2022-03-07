@@ -1,11 +1,10 @@
-#!/usr/bin/env python3
-
 import os
 import networkx as nx
+from pathlib import Path
 from soft.entities import Item
 
 # pages
-MAINMENU = Item('ROOT', 0, back=None)
+MAINMENU = Item('ROOT', 0, back=False)
 HOTSPOT = Item('HOTSPOT', 1, back=True)
 PATCHES = Item('PATCHES', 1, back=True)
 
@@ -14,21 +13,27 @@ ACTIVATE = Item('ACTIVATE', 2, back=True)
 DEACTIVATE = Item('DEACTIVATE', 2, back=True)
 
 # patch path
-PATCHESPATH = '../../patches'
+PATCHESPATH = Path('../../patches').resolve()
 
 # build graph
 
 Graph = nx.DiGraph()
-
-files = os.walk(PATCHESPATH).__next__()[2]
-absolute_path = os.path.abspath(PATCHESPATH)
+files = list(PATCHESPATH.glob('*.pd'))
 
 for file in sorted(files):
-    patch = Item(file, 2, path=absolute_path + '/' + file, back=False)
+    patch = Item(file.stem, 2, path=file, back=False)
     Graph.add_edge(PATCHES, patch)
 
-Graph.add_edges_from([(MAINMENU, HOTSPOT), (MAINMENU, PATCHES)])
-Graph.add_edges_from([(HOTSPOT, ACTIVATE), (HOTSPOT, DEACTIVATE)])
+Graph.add_edge(PATCHES, Item('back'))
+
+
+def one_to_many(_from, _to):
+    links = [(_from, x) for x in _to]
+    Graph.add_edges_from(links)
+
+
+one_to_many(MAINMENU, [HOTSPOT, PATCHES])
+one_to_many(HOTSPOT, [ACTIVATE, DEACTIVATE, Item('back')])
 
 
 def get_nodes(graph, node):
@@ -49,4 +54,4 @@ def is_leave(graph, node):
 
 
 def is_child(graph, node):
-    return len(graph.in_edgeges(node)) > 0
+    return len(graph.in_edges(node)) > 0
