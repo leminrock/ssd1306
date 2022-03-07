@@ -11,6 +11,9 @@ class Item:
         self._back = back
         self._path = path
 
+    def __repr__(self):
+        return f"Item: {self.name}"
+
     @property
     def name(self):
         return self._name
