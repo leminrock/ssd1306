@@ -17,7 +17,10 @@ SHORT_LONG = 4
 encoder = EncoderEC11(PIN1, PIN2)
 button1 = RockButton(PIN3)
 button2 = RockButton(PIN4)
-current_page = PagerShort()
+shortpage = PagerShort()
+longpage = PagerLong()
+
+current_page = shortpage
 
 
 def button_routine(gpio):
@@ -27,13 +30,15 @@ def button_routine(gpio):
     if not Graph.is_leaf(sel):
         print("not leaf")
         nodes = Graph.get_nodes(sel)
+
         if len(nodes) <= SHORT_LONG:
-            print("pageshort")
-            current_page = PageShort(nodes)
-            print(dir(current_page))
+            current_page = shortpage
         else:
             print("pagelong")
-            current_page = PageLong(nodes)
+            current_page = longpage
+
+        current_page.populate(nodes)
+
     else:
         print("leaf")
 

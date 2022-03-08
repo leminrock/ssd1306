@@ -6,12 +6,16 @@ class Pager:
         self._items = items
         self._length = len(items)
         self._max = self._length - 1
-        print(f"items:\t{self._items}\nlength:\t{self._length}\nmax:\t{self._max}")
+        print(
+            f"items:\t{self._items}\nlength:\t{self._length}\nmax:\t{self._max}")
 
     def populate(self, items):
         self._items = items
         self._length = len(self._items)
         self._max = self._length - 1
+
+    def get_items(self):
+        return self._items
 
     def get_selected(self):
         """get selected item"""
