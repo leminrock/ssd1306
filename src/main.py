@@ -23,19 +23,9 @@ mainmenu = PagerShort()
 def button_routine(gpio):
     global current_page
     sel = current_page.get_selected()
-    """
-    if not sel.is_leaf():
-        current_page.populate(Graph.get_nodes(sel))
-        back = False
-
-        if sel.is_child():
-            back = True
-
-        current_page.draw(title=sel.name, drawback=back)
-    else:
-        print(sel.path)
-    """
+    
     if not Graph.is_leaf(sel):
+        print("not leaf")
         nodes = Graph.get_nodes(sel)
         if len(nodes) <= SHORT_LONG:
             current_page = PageShort(nodes)
