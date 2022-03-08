@@ -38,7 +38,7 @@ def button_routine(gpio):
             current_page = longpage
 
         current_page.populate(nodes)
-
+        print(current_page.get_items())
     else:
         print("leaf")
 
