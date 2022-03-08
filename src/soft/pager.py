@@ -21,6 +21,10 @@ class Pager:
         """get selected item"""
         return self._items[self._pos]
 
+    @property
+    def pos(self):
+        return self._pos
+
 
 class PagerShort(Pager):
     def __init__(self, items=[]):
@@ -36,6 +40,7 @@ class PagerShort(Pager):
 
     def draw(self, selected=0, title='main title', drawback=False):
         items = [x.name for x in self._items]
+        print(self.pos)
         print(items)
         print(self.get_selected())
         #roled.drawmenu(items, selected, title, drawback)
