@@ -27,13 +27,13 @@ def button_routine(gpio):
     if not Graph.is_leaf(sel):
         print("not leaf")
         nodes = Graph.get_nodes(sel)
-        print(nodes)
         if len(nodes) <= SHORT_LONG:
-            current_page = PageShort(nodes)
             print("pageshort")
+            current_page = PageShort(nodes)
+            print(current_page.__dict__)
         else:
-            current_page = PageLong(nodes)
             print("pagelong")
+            current_page = PageLong(nodes)
     else:
         print("leaf")
 
