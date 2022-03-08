@@ -53,4 +53,5 @@ def drawskeleton(draw, title, drawback=False):
 
 
 def _get_filler(selected, n):
-    return selected == n ? 'black': 'white'
+    # return selected == n ? 'black': 'white'
+    return 'black' if selected == n else 'white'

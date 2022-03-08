@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 
 import mraa
-from soft import pager as rpager
+#from soft import pager as rpager
+from soft.pager import PagerShort, PagerLong
 from soft import menu as rmenu
 from hard import hardware as rhard
 from hard import rotary_encoder as renc
@@ -15,16 +16,16 @@ PIN4 = 8
 encoder = rhard.EncoderEC11()
 button1 = rhard.RockButton()
 button2 = rhard.RockButton()
-mainmenu = rpager.Pager()
-hostspotmenu = rpager.Pager()
-patchesmenu = rpager.Pager()
+mainmenu = PagerShort()  # rpager.Pager()
+#hostspotmenu = rpager.Pager()
+#patchesmenu = rpager.Pager()
 
 
 def button_routine(gpio):
     global current_page
     sel = current_page.get_selected()
     if not sel.is_leave():
-        current_page = rpager.populate(rmenu.get_nodes(rmenu.Graph, sel))
+        current_page.populate(rmenu.get_nodes(rmenu.Graph, sel))
         back = False
 
         if sel.is_child():
