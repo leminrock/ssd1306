@@ -36,14 +36,14 @@ class PagerShort(Pager):
         newpos = max(0, min(self._max, self._pos + direction))
 
         if self._pos != newpos:
-            self.draw(newpos)
             self._pos = newpos
+            self.draw(self._pos)
 
     def draw(self, selected=0, title='main title', drawback=False):
         items = [x.name for x in self._items]
-        print(self.pos)
-        print(items)
-        print(self.get_selected())
+        print("position:",self.pos)
+        print("items:",items)
+        print("selected:", self.get_selected())
         #roled.drawmenu(items, selected, title, drawback)
 
 
