@@ -25,9 +25,9 @@ current_page = shortpage
 
 def button_routine(gpio):
     global current_page
-    if gpio == PIN3:
-        sel = current_page.get_selected()
+    sel = current_page.get_selected()
 
+    if gpio == PIN3:
         if not Graph.is_leaf(sel):
             print("not leaf")
             nodes = Graph.get_nodes(sel)
@@ -42,7 +42,16 @@ def button_routine(gpio):
         else:
             print("leaf")
     else:
-        print("GO BACK")
+        previous_node = Graph.get_back(sel)
+        nodes = Graph.get_nodes(previous_node)
+
+        if len(nodes) <= SHORT_LONG:
+            current_page = shortpage
+        else:
+            print("pagelong")
+            current_page = longpage
+
+        current_page.populate(nodes)
 
 
 if __name__ == '__main__':
