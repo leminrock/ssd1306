@@ -11,13 +11,10 @@ PIN2 = 13
 PIN3 = 10
 PIN4 = 8
 
-
 encoder = EncoderEC11(PIN1, PIN2)
 button1 = RockButton(PIN3)
 button2 = RockButton(PIN4)
-mainmenu = PagerShort()  # rpager.Pager()
-#hostspotmenu = rpager.Pager()
-#patchesmenu = rpager.Pager()
+mainmenu = PagerShort()
 
 
 def button_routine(gpio):
@@ -41,8 +38,6 @@ if __name__ == '__main__':
     encoder.isr()
 
     mainmenu.populate(rmenu.get_nodes(rmenu.Graph, rmenu.MAINMENU))
-    #hostspotmenu.populate(rmenu.get_nodes(rmenu.Graph, rmenu.HOTSPOT))
-    #patchesmenu.populate(rmenu.get_nodes(rmenu.Graph, rmenu.PATCHES))
 
     mainmenu.draw()
     current_page = mainmenu

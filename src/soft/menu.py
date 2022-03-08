@@ -14,43 +14,45 @@ DEACTIVATE = Item('DEACTIVATE', 2, back=True)
 # patch path
 PATCHESPATH = Path('../../patches').resolve()
 
+
+class GraphMenu:
+    def __init__(self):
+        self.Graph = nx.DiGraph()
+
+    def one_to_one(self, _from, _to):
+        self.Graph.add_edge(_from, _to)
+
+    def one_to_many(self, _from, _to):
+        links = [(_from, x) for x in _to]
+        self.Graph.add_edges_from(links)
+
+    def get_nodes(self, node):
+        return list(self.Graph.successors(node))
+
+    def get_names(self, node):
+        return [x.name for x in self.get_nodes(node)]
+
+    def is_leave(self, node):
+        return len(self.Graph.out_edges(node)) == 0
+
+    def is_child(self, node):
+        return len(self.Graph.in_edges(node)) > 0
+
+    def get_back(self, node):
+        pred = list(self.Graph.predecessors(node))
+        return pred[0]
+
+
 # build graph
 
-Graph = nx.DiGraph()
+Graph = GraphMenu()
+
 files = list(PATCHESPATH.glob('*.pd'))
 
 for file in sorted(files):
     patch = Item(file.stem, 2, path=file, back=False)
-    Graph.add_edge(PATCHES, patch)
+    Graph.one_to_one(PATCHES, patch)
 
-Graph.add_edge(PATCHES, Item('back'))
-
-
-def one_to_many(_from, _to):
-    links = [(_from, x) for x in _to]
-    Graph.add_edges_from(links)
-
-
-one_to_many(MAINMENU, [HOTSPOT, PATCHES])
-one_to_many(HOTSPOT, [ACTIVATE, DEACTIVATE, Item('back')])
-
-
-def get_nodes(graph, node):
-    return list(graph.successors(node))
-
-
-def get_names(graph, node):
-    return [x.name for x in get_nodes(graph, node)]
-
-
-def get_back(graph, node):
-    pred = list(graph.predecessors(node))
-    return pred[0]
-
-
-def is_leave(graph, node):
-    return len(graph.out_edges(node)) == 0
-
-
-def is_child(graph, node):
-    return len(graph.in_edges(node)) > 0
+Graph.one_to_one(PATCHES, Item('back'))
+Graph.one_to_many(MAINMENU, [HOTSPOT, PATCHES])
+Graph.one_to_many(HOTSPOT, [ACTIVATE, DEACTIVATE, Item('back')])
