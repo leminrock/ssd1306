@@ -22,6 +22,9 @@ longpage = PagerLong()
 
 current_page = shortpage
 
+def set_page_type(length):
+    return shortpage if length <= SHORT_LONG else longpage
+    
 
 def button_routine(gpio):
     global current_page
@@ -32,25 +35,15 @@ def button_routine(gpio):
             print("not leaf")
             nodes = Graph.get_nodes(sel)
 
-            if len(nodes) <= SHORT_LONG:
-                current_page = shortpage
-            else:
-                print("pagelong")
-                current_page = longpage
-
+            current_page = set_page_type(len(nodes))
             current_page.populate(nodes)
         else:
             print("leaf")
-    else:
+    elif gpio == PIN4:
         previous_node = Graph.get_back(sel)
-        nodes = Graph.get_nodes(previous_node)
-
-        if len(nodes) <= SHORT_LONG:
-            current_page = shortpage
-        else:
-            print("pagelong")
-            current_page = longpage
-
+        nodes = Graph.get_nodes(Graph.get_back(previous_node))
+        
+        current_page = set_page_type(len(nodes))
         current_page.populate(nodes)
 
 
