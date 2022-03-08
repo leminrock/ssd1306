@@ -1,10 +1,9 @@
 #!/usr/bin/env python3
 
 import mraa
-#from soft import pager as rpager
 from soft.pager import PagerShort, PagerLong
 from soft import menu as rmenu
-from hard import hardware as rhard
+from hard.hardware import EncoderEC11, RockButton
 from hard import rotary_encoder as renc
 
 PIN1 = 11
@@ -13,9 +12,9 @@ PIN3 = 10
 PIN4 = 8
 
 
-encoder = rhard.EncoderEC11()
-button1 = rhard.RockButton()
-button2 = rhard.RockButton()
+encoder = EncoderEC11(PIN1, PIN2)
+button1 = RockButton(PIN3)
+button2 = RockButton(PIN4)
 mainmenu = PagerShort()  # rpager.Pager()
 #hostspotmenu = rpager.Pager()
 #patchesmenu = rpager.Pager()
@@ -37,11 +36,8 @@ def button_routine(gpio):
 
 
 if __name__ == '__main__':
-    button1.encode(PIN3)
     button1.isr(button_routine)
-    button2.encode(PIN4)
     button2.isr(button_routine)
-    encoder.encode(PIN1, PIN2)
     encoder.isr()
 
     mainmenu.populate(rmenu.get_nodes(rmenu.Graph, rmenu.MAINMENU))

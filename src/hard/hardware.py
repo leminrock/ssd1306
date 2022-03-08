@@ -3,9 +3,10 @@ from hard import rotary_encoder as renc
 
 
 class EncoderEC11:
-    def __init__(self):
+    def __init__(self, pin1, pin2):
         self._enc = None
         self.old_position = 0
+        self.encode(pin1, pin2)
 
     @property
     def enc(self):
