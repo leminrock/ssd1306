@@ -19,7 +19,7 @@ class Pager:
 
 
 class PagerShort(Pager):
-    def __init__(self, items):
+    def __init__(self, items=[]):
         super().__init__(items)
         self._pos = 0
 
@@ -36,7 +36,7 @@ class PagerShort(Pager):
 
 
 class PagerLong(Pager):
-    def __init__(self, items):
+    def __init__(self, items=[]):
         super().__init__(items)
         self._pos = 1
 
