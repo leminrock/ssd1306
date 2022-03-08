@@ -2,7 +2,7 @@
 
 import mraa
 from soft.pager import PagerShort, PagerLong
-from soft import menu as rmenu
+from soft import menu
 from hard.hardware import EncoderEC11, RockButton
 from hard import rotary_encoder as renc
 
@@ -21,7 +21,7 @@ def button_routine(gpio):
     global current_page
     sel = current_page.get_selected()
     if not sel.is_leave():
-        current_page.populate(rmenu.get_nodes(rmenu.Graph, sel))
+        current_page.populate(menu.get_nodes(menu.Graph, sel))
         back = False
 
         if sel.is_child():
@@ -37,7 +37,7 @@ if __name__ == '__main__':
     button2.isr(button_routine)
     encoder.isr()
 
-    mainmenu.populate(rmenu.get_nodes(rmenu.Graph, rmenu.MAINMENU))
+    mainmenu.populate(menu.get_nodes(menu.Graph, menu.MAINMENU))
 
     mainmenu.draw()
     current_page = mainmenu
