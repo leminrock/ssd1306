@@ -33,7 +33,10 @@ def button_routine(gpio):
     else:
         print(sel.path)
     """
-    print(sel)
+    if not Graph.is_leave(sel):
+        print("not leave")
+    else:
+        print("leave")
 
 
 if __name__ == '__main__':
