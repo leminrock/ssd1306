@@ -38,7 +38,6 @@ def button_routine(gpio):
             current_page = longpage
 
         current_page.populate(nodes)
-        print(current_page.get_items())
     else:
         print("leaf")
 
@@ -50,9 +49,6 @@ if __name__ == '__main__':
 
     current_page.populate(Graph.get_nodes(menu.MAINMENU))
     current_page.draw()
-
-    # hostspotmenu.draw()
-    #current_page = hostspotmenu
 
     while True:
         direction = encoder.refresh()

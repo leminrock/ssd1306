@@ -37,6 +37,7 @@ class PagerShort(Pager):
     def draw(self, selected=0, title='main title', drawback=False):
         items = [x.name for x in self._items]
         print(items)
+        print(self.get_selected())
         #roled.drawmenu(items, selected, title, drawback)
 
 
