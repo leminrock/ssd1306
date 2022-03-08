@@ -9,11 +9,6 @@ class Pager:
         print(
             f"items:\t{self._items}\nlength:\t{self._length}\nmax:\t{self._max}")
 
-    def populate(self, items):
-        self._items = items
-        self._length = len(self._items)
-        self._max = self._length - 1
-
     def get_items(self):
         return self._items
 
@@ -29,6 +24,12 @@ class Pager:
 class PagerShort(Pager):
     def __init__(self, items=[]):
         super().__init__(items)
+        self._pos = 0
+
+    def populate(self, items):
+        self._items = items
+        self._length = len(self._items)
+        self._max = self._length - 1
         self._pos = 0
 
     def update(self, direction):
@@ -49,6 +50,12 @@ class PagerShort(Pager):
 class PagerLong(Pager):
     def __init__(self, items=[]):
         super().__init__(items)
+        self._pos = 1
+
+    def populate(self, items):
+        self._items = items
+        self._length = len(self._items)
+        self._max = self._length - 1
         self._pos = 1
 
     def draw(self, selected=0, title='patches', drawback=True):
