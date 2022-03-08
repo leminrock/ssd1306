@@ -18,7 +18,7 @@ class GraphMenu:
     def get_names(self, node):
         return [x.name for x in self.get_nodes(node)]
 
-    def is_leave(self, node):
+    def is_leaf(self, node):
         return len(self.Graph.out_edges(node)) == 0
 
     def is_child(self, node):

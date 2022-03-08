@@ -22,7 +22,7 @@ def button_routine(gpio):
     global current_page
     sel = current_page.get_selected()
     """
-    if not sel.is_leave():
+    if not sel.is_leaf():
         current_page.populate(Graph.get_nodes(sel))
         back = False
 
@@ -33,10 +33,12 @@ def button_routine(gpio):
     else:
         print(sel.path)
     """
-    if not Graph.is_leave(sel):
-        print("not leave")
+    if not Graph.is_leaf(sel):
+        print("not leaf")
+        nodes = Graph.get_nodes(sel)
+        print(nodes)
     else:
-        print("leave")
+        print("leaf")
 
 
 if __name__ == '__main__':
