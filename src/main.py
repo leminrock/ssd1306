@@ -12,6 +12,8 @@ PIN2 = 13
 PIN3 = 10
 PIN4 = 8
 
+SHORT_LONG = 4
+
 encoder = EncoderEC11(PIN1, PIN2)
 button1 = RockButton(PIN3)
 button2 = RockButton(PIN4)
@@ -34,9 +36,13 @@ def button_routine(gpio):
         print(sel.path)
     """
     if not Graph.is_leaf(sel):
-        print("not leaf")
         nodes = Graph.get_nodes(sel)
-        print(nodes)
+        if len(nodes) <= SHORT_LONG:
+            current_page = PageShort(nodes)
+            print("pageshort")
+        else:
+            current_page = PageLong(nodes)
+            print("pagelong")
     else:
         print("leaf")
 
