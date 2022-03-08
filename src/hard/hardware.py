@@ -51,8 +51,8 @@ class EncoderEC11:
 
 
 class RockButton:
-    def __init__(self):
-        pass
+    def __init__(self, pin):
+        self.encode(pin)
 
     def encode(self, pin):
         self._pin = pin
