@@ -3,10 +3,10 @@ from hard import oled as roled
 
 class Pager:
     def __init__(self, items=[]):
-        self._pos = 0
         self._items = items
         self._length = len(items)
         self._max = self._length - 1
+        print(f"items:\t{self._items}\nlength:\t{self._length}\nmax:\t{self._max}")
 
     def populate(self, items):
         self._items = items

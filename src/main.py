@@ -17,7 +17,7 @@ SHORT_LONG = 4
 encoder = EncoderEC11(PIN1, PIN2)
 button1 = RockButton(PIN3)
 button2 = RockButton(PIN4)
-mainmenu = PagerShort()
+current_page = PagerShort()
 
 
 def button_routine(gpio):
@@ -30,7 +30,7 @@ def button_routine(gpio):
         if len(nodes) <= SHORT_LONG:
             print("pageshort")
             current_page = PageShort(nodes)
-            print(current_page.__dict__)
+            print(dir(current_page))
         else:
             print("pagelong")
             current_page = PageLong(nodes)
@@ -43,10 +43,8 @@ if __name__ == '__main__':
     button2.isr(button_routine)
     encoder.isr()
 
-    mainmenu.populate(Graph.get_nodes(menu.MAINMENU))
-
-    mainmenu.draw()
-    current_page = mainmenu
+    current_page.populate(Graph.get_nodes(menu.MAINMENU))
+    current_page.draw()
 
     # hostspotmenu.draw()
     #current_page = hostspotmenu
