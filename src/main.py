@@ -21,6 +21,7 @@ mainmenu = PagerShort()
 def button_routine(gpio):
     global current_page
     sel = current_page.get_selected()
+    """
     if not sel.is_leave():
         current_page.populate(Graph.get_nodes(sel))
         back = False
@@ -31,6 +32,8 @@ def button_routine(gpio):
         current_page.draw(title=sel.name, drawback=back)
     else:
         print(sel.path)
+    """
+    print(sel)
 
 
 if __name__ == '__main__':
