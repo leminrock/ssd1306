@@ -15,7 +15,6 @@ DEACTIVATE = Item('DEACTIVATE')
 PATCHESPATH = Path('../../patches').resolve()
 
 # build graph
-
 Graph = GraphMenu()
 
 files = list(PATCHESPATH.glob('*.pd'))
