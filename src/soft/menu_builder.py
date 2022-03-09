@@ -3,13 +3,13 @@ from soft.entities import Item
 from soft.graph_menu import GraphMenu
 
 # pages
-MAINMENU = Item('ROOT', 0, back=False)
-HOTSPOT = Item('HOTSPOT', 1, back=True)
-PATCHES = Item('PATCHES', 1, back=True)
+MAINMENU = Item('ROOT')
+HOTSPOT = Item('HOTSPOT')
+PATCHES = Item('PATCHES')
 
 # HOTSPOT items
-ACTIVATE = Item('ACTIVATE', 2, back=True)
-DEACTIVATE = Item('DEACTIVATE', 2, back=True)
+ACTIVATE = Item('ACTIVATE')
+DEACTIVATE = Item('DEACTIVATE')
 
 # patch path
 PATCHESPATH = Path('../../patches').resolve()
@@ -21,9 +21,8 @@ Graph = GraphMenu()
 files = list(PATCHESPATH.glob('*.pd'))
 
 for file in sorted(files):
-    patch = Item(file.stem, 2, path=file, back=False)
+    patch = Item(file.stem, 2, path=file)
     Graph.one_to_one(PATCHES, patch)
 
-Graph.one_to_one(PATCHES, Item('back'))
 Graph.one_to_many(MAINMENU, [HOTSPOT, PATCHES])
-Graph.one_to_many(HOTSPOT, [ACTIVATE, DEACTIVATE, Item('back')])
+Graph.one_to_many(HOTSPOT, [ACTIVATE, DEACTIVATE])

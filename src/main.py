@@ -12,7 +12,6 @@ PIN1 = 11
 PIN2 = 13
 PIN3 = 10
 PIN4 = 8
-
 SHORT_LONG = 4
 
 encoder = EncoderEC11(PIN1, PIN2)
