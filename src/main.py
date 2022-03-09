@@ -4,6 +4,7 @@ import mraa
 from soft.pager import PagerShort, PagerLong
 from soft import menu_builder as menu
 from soft.menu_builder import Graph
+from soft import mylogger as log
 from hard.hardware import EncoderEC11, RockButton
 from hard import rotary_encoder as renc
 
@@ -17,14 +18,14 @@ SHORT_LONG = 4
 encoder = EncoderEC11(PIN1, PIN2)
 button1 = RockButton(PIN3)
 button2 = RockButton(PIN4)
-shortpage = PagerShort()
-longpage = PagerLong()
-
+shortpage = PagerShort(pos=0)
+longpage = PagerLong(pos=2)
 current_page = shortpage
 
+
 def set_page_type(length):
-    return shortpage if length <= SHORT_LONG else longpage
-    
+    return shortpage if length <= SHORT_LONG else longpage, 0 if length <= SHORT_LONG else 2
+
 
 def button_routine(gpio):
     global current_page
@@ -32,19 +33,17 @@ def button_routine(gpio):
 
     if gpio == PIN3:
         if not Graph.is_leaf(sel):
-            print("not leaf")
+            log.INFO("NOT LEAF")
             nodes = Graph.get_nodes(sel)
-
-            current_page = set_page_type(len(nodes))
-            current_page.populate(nodes)
+            current_page, pos = set_page_type(len(nodes))
+            current_page.populate(nodes, pos)
         else:
-            print("leaf")
+            log.INFO("LEAF")
     elif gpio == PIN4:
         previous_node = Graph.get_back(sel)
         nodes = Graph.get_nodes(Graph.get_back(previous_node))
-        
-        current_page = set_page_type(len(nodes))
-        current_page.populate(nodes)
+        current_page, pos = set_page_type(len(nodes))
+        current_page.populate(nodes, pos)
 
 
 if __name__ == '__main__':
@@ -60,4 +59,4 @@ if __name__ == '__main__':
 
         if direction:
             current_page.update(direction)
-            print(direction)
+            log.INFO(f"direction:\t{direction}")
