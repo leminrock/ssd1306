@@ -1,5 +1,2 @@
-sleep 2
+#!/usr/bin/env bash
 echo ciao
-sleep 2
-echo fine
-exit 0

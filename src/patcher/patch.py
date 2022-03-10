@@ -7,7 +7,9 @@ diry = '.'
 path = Path(diry).resolve()
 path = path / Path('test.sh')
 
-#arg = path._str
-# print(arg)
-print(dir(path))
-proc = sp.Popen([path])
+
+with open(path, 'w') as f:
+    f.write("#!/usr/bin/env bash\n")
+    f.write("echo ciao\n")
+
+sp.run(str(path))
