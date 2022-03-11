@@ -38,6 +38,7 @@ def button_routine(gpio):
             current_page.populate(nodes, pos)
         else:
             log.INFO("LEAF")
+            # sel.command()
     elif gpio == PIN4:
         previous_node = Graph.get_back(sel)
         nodes = Graph.get_nodes(Graph.get_back(previous_node))

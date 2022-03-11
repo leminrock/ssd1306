@@ -19,4 +19,8 @@ def WARN(msg):
 
 def ERROR(msg):
     if not DISABLE:
-        logging.error(msg)
+        logging.error(bold(msg))
+
+
+def bold(msg):
+    return f'\033[1m{msg}\033[0m'

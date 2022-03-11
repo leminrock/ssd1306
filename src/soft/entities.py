@@ -1,3 +1,6 @@
+from soft import rock_logger as log
+
+
 class Item:
     """item class"""
 
@@ -21,3 +24,11 @@ class Item:
     @property
     def level(self):
         return self._level
+
+    def set_command(self, func, *args):
+        self._func = func
+        self._args = args
+
+    def command(self):
+        log.WARN("CALL COMMAND")
+        self._func(*self._args)
