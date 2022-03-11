@@ -54,6 +54,7 @@ def set_patch(*args):
     else:
         log.ERROR(f"FUNCTION set_patch NEEDS 3 ARGS, BUT {len(args)} PROVIDED")
         res += 1
+
     if not res:
         return 0
     else:
