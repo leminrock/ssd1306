@@ -23,6 +23,6 @@
 #	exit 1
 #}
 
-sleep 2
-echo copio...
+echo COPY SERVICE FILES ON SYSTEM-D DIR
 sudo cp ./systemd/rock_jackd.service /etc/systemd/system/rock_jackd.service
+echo DONE
