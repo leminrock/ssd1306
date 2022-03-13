@@ -7,7 +7,7 @@ Type=oneshot
 #Restart=always
 #RestartSec=1
 User=root
-WorkingDirectory=~/Documents/leminrock/
+#WorkingDirectory=~/Documents/leminrock/
 ExecStart=/usr/bin/jackd -v -P95 -dalsa -r44100 -p512 -n2 -D -Chw:EIE -Phw:EIE
 
 [Install]
