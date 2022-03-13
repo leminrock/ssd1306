@@ -40,4 +40,3 @@ Oled ssd1306 has 4 pin: GND, VCC, SDA, SCL, connect it to rockpis following this
 | 5       | SDA     |
 | 6       | GND     |
 
-
