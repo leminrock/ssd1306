@@ -1,5 +1,5 @@
 [Unit]
-Description=wifi button service
+Description=jackd manager
 StartLimitIntervalSec=0
 
 [Service]
