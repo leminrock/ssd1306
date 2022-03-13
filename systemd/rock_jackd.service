@@ -1,0 +1,14 @@
+[Unit]
+Description=jackd manager
+StartLimitIntervalSec=0
+
+[Service]
+Type=oneshot
+#Restart=always
+#RestartSec=1
+User=root
+#WorkingDirectory=~/Documents/leminrock/
+ExecStart=/home/rock/.jackdrc
+
+[Install]
+WantedBy=multi-user.target
