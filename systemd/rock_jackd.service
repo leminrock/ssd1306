@@ -8,7 +8,7 @@ Type=oneshot
 #RestartSec=1
 User=root
 #WorkingDirectory=~/Documents/leminrock/
-ExecStart=/usr/bin/jackd -R -P 95 -d alsa -d hw:rockchiprk3308a -r 44100 -p 256
+ExecStart=export JACK_NO_AUDIO_RESERVATION=1;/usr/bin/jackd -R -P 95 -d alsa -d hw:rockchiprk3308a -r 44100 -p 256
 
 [Install]
 WantedBy=multi-user.target
