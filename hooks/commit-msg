@@ -25,4 +25,5 @@
 
 echo COPY SERVICE FILES ON SYSTEM-D DIR
 sudo cp ./systemd/rock_jackd.service /etc/systemd/system/rock_jackd.service
+sudo cp ./systemd/rock_puredata.service /etc/systemd/system/rock_puredata.service
 echo DONE
