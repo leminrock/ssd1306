@@ -1,6 +1,7 @@
 [Unit]
 Description=jackd service
 StartLimitIntervalSec=0
+After=rock_jackd.service
 
 [Service]
 Type=oneshot
@@ -8,7 +9,7 @@ Type=oneshot
 #RestartSec=1
 User=root
 #WorkingDirectory=~/Documents/leminrock/
-ExecStart=/home/rock/.jackdrc
+ExecStart=/home/rock/.puredata
 
 [Install]
 WantedBy=multi-user.target
