@@ -8,7 +8,7 @@ Type=oneshot
 #RestartSec=1
 User=root
 #WorkingDirectory=~/Documents/leminrock/
-ExecStart=/usr/bin/jackd -v -P95 -dalsa -r44100 -p512 -n2 -D -Chw:EIE -Phw:EIE
+ExecStart=/usr/bin/jackd -R -P 95 -d alsa -d hw:rockchiprk3308a -r 44100 -p 256
 
 [Install]
 WantedBy=multi-user.target
