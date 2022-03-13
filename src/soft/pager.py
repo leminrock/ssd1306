@@ -41,8 +41,8 @@ class PagerShort(Pager):
 
     def draw(self, selected=0, title='main title', drawback=False):
         items = [x.name for x in self._items]
-        print("position:",self.pos)
-        print("items:",items)
+        print("position:", self.pos)
+        print("items:", items)
         print("selected:", self.get_selected())
         #roled.drawmenu(items, selected, title, drawback)
 
@@ -56,7 +56,7 @@ class PagerLong(Pager):
         self._items = items
         self._length = len(self._items)
         self._max = self._length - 1
-        self._pos = 1
+        self._pos = 2
 
     def draw(self, selected=0, title='patches', drawback=True):
         pass
