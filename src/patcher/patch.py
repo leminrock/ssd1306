@@ -1,13 +1,43 @@
 #!/usr/bin/env python3
 
-from soft import rock_logger as log
 import subprocess as sproc
+from soft import rock_logger as log
 from pathlib import Path
+from hard import oled
 
 COMMAND = "puredata -nogui -jack"
 SERVICESCRIPT = "setpatch.sh"
 SHEBANG = "#!/usr/bin/env bash\n\n"
 SYSTEMD_COMMAND = "systemctl"
+
+
+########################### - API - ###########################
+
+
+def set_patch(*args):
+    res = 0
+    if len(args) == 3:
+        patchname, jackdservice, pdservice = args
+        res += _set(patchname)
+        res += _service(pdservice, 'stop')
+        res += _service(jackdservice, 'restart')
+        res += _service(pdservice, 'restart')
+    else:
+        log.ERROR(
+            f"FUNCTION set_patch() NEEDS 3 ARGS, BUT {len(args)} PROVIDED")
+        res += 1
+
+    if not res:
+        oled.drawmenu([args[0]], 0, "PATCH LOADED")
+        log.INFO("OK")
+        return 0
+    else:
+        oled.drawmenu(["ERROR"], 0, "PATCH NOT LOADED")
+        log.ERROR("task executed with errors")
+        return 1
+
+
+######################## - INTERNALS - ########################
 
 
 def _set(patchname):
@@ -41,22 +71,3 @@ def _service(service, action):
         return 1
     else:
         return 0
-
-
-def set_patch(*args):
-    res = 0
-    if len(args) == 3:
-        patchname, jackdservice, pdservice = args
-        res += _set(patchname)
-        res += _service(pdservice, 'stop')
-        res += _service(jackdservice, 'restart')
-        res += _service(pdservice, 'restart')
-    else:
-        log.ERROR(f"FUNCTION set_patch NEEDS 3 ARGS, BUT {len(args)} PROVIDED")
-        res += 1
-
-    if not res:
-        return 0
-    else:
-        log.ERROR("task executed with errors")
-        return 1
