@@ -1,5 +1,5 @@
 [Unit]
-Description=jackd service
+Description=puredata service
 StartLimitIntervalSec=0
 After=rock_jackd.service
 
