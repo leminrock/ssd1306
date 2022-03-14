@@ -6,7 +6,7 @@ StartLimitIntervalSec=0
 Type=oneshot
 #Restart=always
 #RestartSec=1
-User=rock
+User=root
 #WorkingDirectory=~/Documents/leminrock/
 ExecStart=/home/rock/.jackdrc
 
