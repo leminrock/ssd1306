@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 
-from luma.core.interface.serial import i2c, spi, pcf8574
-from luma.core.interface.parallel import bitbang_6800
+from luma.core.interface.serial import i2c
 from luma.core.render import canvas
 from luma.oled.device import ssd1306
 from PIL import ImageFont
@@ -16,10 +15,11 @@ DOWN = HEIGHT - 1
 OFFSET = STEP * 2
 SERIAL = i2c(port=1, address=0x3C)
 DEVICE = ssd1306(SERIAL)
-PATHFONT = '../arial.ttf'
+PATHFONT = '../data/arial.ttf'
+FONT = ImageFont.truetype(PATHFONT, STEP)
 
-font = ImageFont.truetype(PATHFONT, STEP)
 
+########################### - API - ###########################
 
 def drawmenu(items, selected=None, title='main menu', drawback=False):
     with canvas(DEVICE) as draw:
@@ -33,23 +33,25 @@ def drawmenu(items, selected=None, title='main menu', drawback=False):
                 (selected + 1) * STEP + OFFSET),
                 outline="white", fill="white")
 
-        drawskeleton(draw, 'main menu', drawback)
+        _drawskeleton(draw, title, drawback)
 
         for n, item in enumerate(items):
             filler = _get_filler(selected, n)
-            draw.text((0, n * STEP + OFFSET), item, font=font, fill=filler)
+            draw.text((0, n * STEP + OFFSET), item, font=FONT, fill=filler)
 
 
-def drawskeleton(draw, title, drawback=False):
+######################## - INTERNALS - ########################
+
+def _drawskeleton(draw, title, drawback=False):
     text = 'back'
-    titlesize = font.getsize(title)
-    size = font.getsize(text)
+    titlesize = FONT.getsize(title)
+    size = FONT.getsize(text)
 
     draw.text(
-        (int(RIGHT / 2 - titlesize[0] / 2), TOP), title, font=font, fill='white')
+        (int(RIGHT / 2 - titlesize[0] / 2), TOP), title, font=FONT, fill='white')
     if drawback:
         draw.text((RIGHT - size[0], DOWN - size[1]),
-                  text, font=font, fill='white')
+                  text, font=FONT, fill='white')
 
 
 def _get_filler(selected, n):
