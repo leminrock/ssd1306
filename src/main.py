@@ -35,6 +35,7 @@ def button_routine(gpio):
             log.INFO("NOT LEAF")
             nodes = Graph.get_nodes(sel)
             current_page, pos = set_page_type(len(nodes))
+            log.INFO(f"{current_page}")
             current_page.populate(nodes, pos)
         else:
             log.INFO("LEAF")
