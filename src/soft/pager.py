@@ -1,5 +1,5 @@
 from hard import oled as roled
-from soft import mylogger as log
+from soft import rock_logger as log
 
 
 class Pager:

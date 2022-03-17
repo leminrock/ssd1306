@@ -15,7 +15,7 @@ DOWN = HEIGHT - 1
 OFFSET = STEP * 2
 SERIAL = i2c(port=1, address=0x3C)
 DEVICE = ssd1306(SERIAL)
-PATHFONT = '../data/arial.ttf'
+PATHFONT = 'data/arial.ttf'
 FONT = ImageFont.truetype(PATHFONT, STEP)
 
 

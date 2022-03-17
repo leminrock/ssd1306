@@ -4,7 +4,7 @@ import mraa
 from soft.pager import PagerShort, PagerLong
 from soft import menu_builder as menu
 from soft.menu_builder import Graph
-from soft import mylogger as log
+from soft import rock_logger as log
 from hard.hardware import EncoderEC11, RockButton
 from hard import rotary_encoder as renc
 
