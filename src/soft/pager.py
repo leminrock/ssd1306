@@ -1,6 +1,7 @@
 from hard import oled as roled
 from soft import rock_logger as log
 
+EMPTY = ''
 
 class Pager:
     def __init__(self, items=[], pos=0):
@@ -73,5 +74,5 @@ class PagerLong(Pager):
 
     @staticmethod
     def decorate_list(lst):
-        double_empty = ['', '']
+        double_empty = [EMPTY, EMPTY]
         return double_empty + lst + double_empty

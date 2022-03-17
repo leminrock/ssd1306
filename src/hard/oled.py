@@ -44,6 +44,7 @@ def drawmenu(items, selected=None, title='main menu', drawback=False):
 
 def _drawskeleton(draw, title, drawback=False):
     text = 'back'
+    print("title type:", type(title))
     titlesize = FONT.getsize(title)
     size = FONT.getsize(text)
 
