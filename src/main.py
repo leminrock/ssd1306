@@ -6,7 +6,6 @@ from soft import menu_builder as menu
 from soft.menu_builder import Graph
 from soft import rock_logger as log
 from hard.hardware import EncoderEC11, RockButton
-from hard import rotary_encoder as renc
 
 PIN1 = 11
 PIN2 = 13
@@ -37,11 +36,10 @@ def button_routine(gpio):
             current_page, pos = set_page_type(len(nodes))
             log.INFO(f"{current_page}")
             current_page.populate(nodes, pos)
-            current_page.populate(nodes, pos)
             current_page.draw()
         else:
             log.INFO("LEAF")
-            # sel.command()
+            sel.command()
     elif gpio == PIN4:
         previous_node = Graph.get_back(sel)
         nodes = Graph.get_nodes(Graph.get_back(previous_node))
