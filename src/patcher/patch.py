@@ -66,6 +66,9 @@ def _service(service, action):
     log.INFO(f"{action.upper()} SERVICE {service.upper()}")
     proc = sproc.run([SYSTEMD_COMMAND, action, service],
                      capture_output=True)
+
+    log.INFO(f"call service response: {proc}")
+
     if proc.returncode:
         log.ERROR(proc.stderr.decode('utf-8').strip('\n').upper())
         return 1
