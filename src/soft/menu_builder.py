@@ -13,18 +13,19 @@ ACTIVATE = Item('ACTIVATE')
 DEACTIVATE = Item('DEACTIVATE')
 
 # patch path
-PATCHESPATH = Path('../../patches').resolve()
+PATCHESPATH = Path('../patches').resolve()
 JACKDSERVICE = 'rock_jackd'
 PDSERVICE = 'rock_puredata'
 
 # build graph
 Graph = GraphMenu()
 
-files = list(PATCHESPATH.glob('*.pd'))
+dirs = list(PATCHESPATH.glob('*'))
 
-for file in sorted(files):
-    patch = Item(file.stem, 2, path=file)
-    patch.set_command(set_patch, file, JACKDSERVICE, PDSERVICE)
+for _dir in sorted(dirs):
+    path = _dir / Path('main.pd')
+    patch = Item(_dir.stem, 2, path=path)
+    patch.set_command(set_patch, path, JACKDSERVICE, PDSERVICE)
     Graph.one_to_one(PATCHES, patch)
 
 Graph.one_to_many(MAINMENU, [HOTSPOT, PATCHES])
