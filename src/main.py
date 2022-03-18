@@ -47,6 +47,7 @@ def button_routine(gpio):
         nodes = Graph.get_nodes(Graph.get_back(previous_node))
         current_page, pos = set_page_type(len(nodes))
         current_page.populate(nodes, pos)
+        current_page.draw()
 
 
 if __name__ == '__main__':
