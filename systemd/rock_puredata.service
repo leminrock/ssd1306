@@ -10,7 +10,7 @@ Type=oneshot
 User=root
 #WorkingDirectory=~/Documents/leminrock/
 ExecStart=/home/rock/.puredata
-Type=ilde
+Type=idle
 
 [Install]
 WantedBy=multi-user.target
