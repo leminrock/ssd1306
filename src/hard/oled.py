@@ -4,6 +4,7 @@ from luma.core.interface.serial import i2c
 from luma.core.render import canvas
 from luma.oled.device import ssd1306
 from PIL import ImageFont
+from soft import rock_logger as log
 
 WIDTH = 128
 HEIGHT = 64
@@ -22,6 +23,7 @@ FONT = ImageFont.truetype(PATHFONT, STEP)
 ########################### - API - ###########################
 
 def drawmenu(items, selected=None, title='main menu', drawback=False):
+    log.INFO(f"CALL drawmenu() with items {items}")
     with canvas(DEVICE) as draw:
         filler = 'white'
 
