@@ -29,6 +29,8 @@ def set_patch(*args):
             f"FUNCTION set_patch() NEEDS 3 ARGS, BUT {len(args)} PROVIDED")
         res += 1
 
+    log.INFO(f"response: {res}")
+
     if not res:
         oled.drawmenu([args[0]], 0, "PATCH LOADED")
         log.INFO("OK")
@@ -68,8 +70,6 @@ def _service(service, action):
     log.INFO(f"{action.upper()} SERVICE {service.upper()}")
     proc = sproc.run([SYSTEMD_COMMAND, action, service],
                      capture_output=True)
-
-    log.INFO(f"call service response: {proc}")
 
     if proc.returncode:
         log.ERROR(proc.stderr.decode('utf-8').strip('\n').upper())
