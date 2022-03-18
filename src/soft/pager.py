@@ -56,7 +56,7 @@ class PagerLong(Pager):
 
         if self._pos != newpos:
             self._pos = newpos
-            self.draw(self._pos)
+            self.draw()
         else:
             log.WARN("new pos NOT set")
 
