@@ -32,7 +32,8 @@ def set_patch(*args):
     log.INFO(f"response: {res}")
 
     if not res:
-        oled.drawmenu([args[0]], 0, "PATCH LOADED")
+        name = args[0].parts[-2]
+        oled.drawmenu([name.upper()], 0, "PATCH LOADED")
         log.INFO("OK")
         return 0
     else:
