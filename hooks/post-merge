@@ -23,9 +23,16 @@
 #	exit 1
 #}
 
+ARCH=$(uname -m)
 echo COPY SERVICE FILES ON SYSTEM-D DIR
 sudo cp ./systemd/rock_jackd.service /etc/systemd/system/rock_jackd.service
 sudo cp ./systemd/rock_puredata.service /etc/systemd/system/rock_puredata.service
-cp ./systemd/.puredata /home/rock/.
-cp ./systemd/.jackdrc /home/rock/.
+
+if [[ ARCH == "aarch64" ]]
+then
+    cp ./systemd/.puredata /home/rock/.
+    cp ./systemd/.jackdrc /home/rock/.
+else
+    echo WRONG ARCHITECTURE
+fi
 echo DONE
