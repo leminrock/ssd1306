@@ -6,7 +6,7 @@ from pathlib import Path
 from hard import oled
 
 COMMAND = "puredata -nogui -jack"
-SERVICESCRIPT = "setpatch.sh"
+SERVICESCRIPT = "/home/rock/.puredata"
 SHEBANG = "#!/usr/bin/env bash\n\n"
 SYSTEMD_COMMAND = "systemctl"
 
