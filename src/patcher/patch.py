@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import time
 import subprocess as sproc
 from soft import rock_logger as log
 from pathlib import Path
@@ -21,6 +22,7 @@ def set_patch(*args):
         res += _set(patchname)
         res += _service(pdservice, 'stop')
         res += _service(jackdservice, 'restart')
+        time.sleep(2)
         res += _service(pdservice, 'restart')
     else:
         log.ERROR(
