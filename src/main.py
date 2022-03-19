@@ -21,8 +21,12 @@ current_page = shortpage
 
 
 def set_page_type(length):
-    page = shortpage if length <= SHORT_LONG else longpage
-    pos = 0 if length <= SHORT_LONG else 2
+    if length <= SHORT_LONG:
+        page = shortpage
+        pos = 0
+    else:
+        page = longpage
+        pos = 2
     return page, pos
 
 
