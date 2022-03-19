@@ -21,7 +21,9 @@ current_page = shortpage
 
 
 def set_page_type(length):
-    return shortpage if length <= SHORT_LONG else longpage, 0 if length <= SHORT_LONG else 2
+    page = shortpage if length <= SHORT_LONG else longpage
+    pos = 0 if length <= SHORT_LONG else 2
+    return page, pos
 
 
 def button_routine(gpio):
