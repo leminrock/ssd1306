@@ -21,6 +21,10 @@ class Item:
     def name(self):
         return self._name
 
+    @name.setter
+    def name(self, name):
+        self.name = name
+        
     @property
     def level(self):
         return self._level
