@@ -63,7 +63,7 @@ class PagerLong(Pager):
     def draw(self, title='patches', drawback=False):
         items = [x.name for x in self._items]
         new_items = self.decorate_list(items)
-        fragment = new_items[self._pos:self._pos+5]
+        fragment = new_items[self._pos:self._pos+5] 
 
         log.INFO(f"{self.__str__()}")
         log.INFO(f"position:\t{self.pos}")
