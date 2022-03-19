@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 
-import mraa
 from soft.pager import PagerShort, PagerLong
 from soft import menu_builder as menu
 from soft.menu_builder import Graph
