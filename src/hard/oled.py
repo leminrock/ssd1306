@@ -51,6 +51,7 @@ def _drawskeleton(draw, title, drawback=False):
 
     draw.text(
         (int(RIGHT / 2 - titlesize[0] / 2), TOP), title, font=FONT, fill='white')
+        
     if drawback:
         draw.text((RIGHT - size[0], DOWN - size[1]),
                   text, font=FONT, fill='white')

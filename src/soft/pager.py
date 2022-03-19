@@ -60,7 +60,7 @@ class PagerLong(Pager):
         else:
             log.WARN("new pos NOT set")
 
-    def draw(self, title='patches', drawback=True):
+    def draw(self, title='patches', drawback=False):
         items = [x.name for x in self._items]
         new_items = self.decorate_list(items)
         fragment = new_items[self._pos:self._pos+5]
