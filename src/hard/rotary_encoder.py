@@ -1,4 +1,3 @@
-import mraa
 import time
 
 DIRECTION = {
