@@ -57,9 +57,8 @@ class Item(ABC):
         pass
 
     @abstractmethod
-    def isr_routine(self, pin):
-        self._isr = RockButton(pin)
-        self._isr.isr(test_routine)
+    def isr_routine(self):
+        pass
 
     @abstractmethod
     def isr_routine_start(self):
@@ -82,8 +81,9 @@ class ItemMenu(Item):
     def draw(self):
         pass
 
-    def isr_routine(self):
-        pass
+    def isr_routine(self, pin):
+        self._isr = RockButton(pin)
+        self._isr.isr(test_routine)
 
     def isr_routine_start(self):
         pass
