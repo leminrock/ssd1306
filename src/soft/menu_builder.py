@@ -1,9 +1,10 @@
 from pathlib import Path
-from soft.entities import Item
+from soft.entities import Item, ItemMenu
 from soft.graph_menu import GraphMenu
 from patcher.patch import set_patch
 # from net.hotspot import
 
+"""
 # pages
 MAINMENU = Item('ROOT')
 HOTSPOT = Item('HOTSPOT')
@@ -34,3 +35,11 @@ for _dir in sorted(dirs):
 Graph.one_to_many(MAINMENU, [HOTSPOT, PATCHES])
 #Graph.one_to_many(HOTSPOT, [ACTIVATE, DEACTIVATE])
 Graph.one_to_one(HOTSPOT, NETWORKSTATE)
+"""
+
+MAINMENU = ItemMenu('MAIN')
+SUBMENU1 = ItemMenu('SUB1', parent=MAINMENU)
+SUBMENU2 = ItemMenu('SUB2', parent=SUBMENU1)
+
+MAINMENU.children = SUBMENU1
+SUBMENU1.children = SUBMENU2
