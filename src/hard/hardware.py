@@ -36,6 +36,10 @@ class EncoderEC11:
         self.pin1.isr(mraa.EDGE_BOTH, self.routine, self._enc)
         self.pin2.isr(mraa.EDGE_BOTH, self.routine, self._enc)
 
+    def isr_exit(self):
+        self.pin1.isrExit()
+        self.pin2.isrExit()
+
     def refresh(self):
         self.tick()
         new_pos = self.position
