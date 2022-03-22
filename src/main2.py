@@ -18,12 +18,13 @@ PREVIOUS = None
 
 while True:
     if PREVIOUS:
-        print("previous:", PREVIOUS.name)
+        print("previous:", PREVIOUS.name, end='\t')
 
-    print(CURRENT.name)
+    print("current:", CURRENT.name)
 
-    if PREVIOUS and PREVIOUS != CURRENT:
-        CURRENT.routine(test_routine, 10)
+    if PREVIOUS and (PREVIOUS != CURRENT):
         PREVIOUS.isr_exit()
+        CURRENT.routine(test_routine, 10)
+        PREVIOUS = CURRENT
 
     time.sleep(0.5)
