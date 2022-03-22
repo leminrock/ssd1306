@@ -12,15 +12,19 @@ PIN_BACKWARD = 10
 def forward_routine(item):
     global CURRENT
     global PREVIOUS
-    PREVIOUS = item
-    CURRENT = item.children[0]
+
+    if item.children[0]:
+        PREVIOUS = item
+        CURRENT = item.children[0]
 
 
 def backward_routine(item):
     global CURRENT
     global PREVIOUS
-    PREVIOUS = item
-    CURRENT = item.parent
+
+    if item.parent:
+        PREVIOUS = item
+        CURRENT = item.parent
 
 
 mb.MAINMENU.routine_forward(forward_routine, PIN_FORWARD)
@@ -34,7 +38,8 @@ while True:
         PREVIOUS.isr_exit()
         CURRENT.routine_forward(forward_routine, PIN_FORWARD)
         CURRENT.routine_backward(backward_routine, PIN_BACKWARD)
-        log.INFO(f"CHANGED!\tprevious: {PREVIOUS.name}\tcurrent: {CURRENT.name}")
+        log.INFO(
+            f"CHANGED!\tprevious: {PREVIOUS.name}\tcurrent: {CURRENT.name}")
         PREVIOUS = CURRENT
 
     time.sleep(0.5)
