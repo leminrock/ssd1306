@@ -3,4 +3,4 @@
 from soft import menu_builder as mb
 
 mb.MAINMENU.isr_routine(10)
-mb.MAINMENU.loop()
+# mb.MAINMENU.loop()
