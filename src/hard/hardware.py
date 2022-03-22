@@ -67,3 +67,6 @@ class RockButton:
 
     def isr(self, routine, arg):
         self.button.isr(mraa.EDGE_RISING, routine, arg)
+
+    def isr_exit(self):
+        self.button.isrExit()
