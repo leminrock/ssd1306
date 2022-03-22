@@ -5,9 +5,10 @@ from soft import menu_builder as mb
 
 
 def test_routine(item):
-    print("cedo il comando")
+    global CURRENT
+    print("cedo il comando a", item.children[0], item.children[0].name)
     CURRENT = item.children[0]
-    CURRENT.routine(item._pin)
+    CURRENT.routine(test_routine, item._pin)
     item.isr_exit()
 
 
