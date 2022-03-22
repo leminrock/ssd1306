@@ -2,5 +2,5 @@
 
 from soft import menu_builder as mb
 
-mb.MAINMENU.routine()
-#mb.MAINMENU.loop()
+mb.MAINMENU.routine(10)
+mb.MAINMENU.loop()
