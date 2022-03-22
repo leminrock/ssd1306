@@ -57,8 +57,8 @@ class RockButton:
 
     def encode(self, pin):
         self._pin = pin
-        self.pin = mraa.Gpio(pin)
-        self.pin.dir(mraa.DIR_IN)
+        self.button = mraa.Gpio(pin)
+        self.button.dir(mraa.DIR_IN)
         log.INFO(f"{self.pin}")
 
     @property
@@ -66,4 +66,4 @@ class RockButton:
         return self._pin
 
     def isr(self, routine):
-        self.pin.isr(mraa.EDGE_RISING, routine, self.n_pin)
+        self.button.isr(mraa.EDGE_RISING, routine, 10)
