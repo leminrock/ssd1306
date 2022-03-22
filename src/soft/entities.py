@@ -63,12 +63,9 @@ class Item(ABC):
 
 
 def test_routine(item):
-    # print(type(item))
-    #item_new = item.children[0]
-    # item_new.routine(item._pin)
-    # item_new.loop()
     print("setting running")
     item.running = 0
+    item.isr_exit()
     item_new = item.children[0]
     item_new.routine(item._pin)
     item_new.loop()
@@ -80,6 +77,9 @@ class ItemMenu(Item):
         self.button = RockButton(pin)
         self.button.isr(test_routine, self)
         self.running = 0
+
+    def isr_exit(self):
+        self.button.isrExit()
 
     def draw(self):
         pass
