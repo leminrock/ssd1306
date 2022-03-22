@@ -62,7 +62,7 @@ class Item(ABC):
 
 
 def test_routine(item):
-    print(item)
+    print(item.children)
 
 
 class ItemMenu(Item):
