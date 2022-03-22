@@ -63,13 +63,13 @@ class Item(ABC):
 
 
 def test_routine(item):
-    print(type(item))
-    item_new = item.children[0]
-    item_new.routine(item._pin)
-    #item_new.loop()
+    # print(type(item))
+    #item_new = item.children[0]
+    # item_new.routine(item._pin)
+    # item_new.loop()
     print("setting running")
     item.running = 0
-    item_new.loop()
+    # item_new.loop()
 
 
 class ItemMenu(Item):
@@ -81,7 +81,6 @@ class ItemMenu(Item):
 
     def draw(self):
         pass
-
 
     def loop(self):
         self.running = 1
