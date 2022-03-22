@@ -62,13 +62,13 @@ class Item(ABC):
 
 
 def test_routine(item):
-    print(item.children)
+    print(item.children[0].name)
 
 
 class ItemMenu(Item):
     def routine(self, pin):
         self.button = RockButton(pin)
-        self.button.isr(test_routine)
+        self.button.isr(test_routine, self)
 
     def draw(self):
         pass

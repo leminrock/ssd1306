@@ -65,5 +65,5 @@ class RockButton:
     def n_pin(self):
         return self._pin
 
-    def isr(self, routine):
-        self.button.isr(mraa.EDGE_RISING, routine, self.n_pin)
+    def isr(self, routine, arg):
+        self.button.isr(mraa.EDGE_RISING, routine, arg)
