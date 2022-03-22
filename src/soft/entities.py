@@ -66,6 +66,10 @@ def test_routine(gpio):
 
 
 class ItemMenu(Item):
+    def routine(self):
+        self.button = RockButton(12)
+        self.button.isr(test_routine)
+
     def draw(self):
         pass
 
