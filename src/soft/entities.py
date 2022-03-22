@@ -64,12 +64,12 @@ class Item(ABC):
 
 def test_routine(item):
     print("setting running")
-    item.running = 0
-    item.isr_exit()
     print("cedo il comando")
     item_new = item.children[0]
     item_new.routine(item._pin)
     item_new.loop()
+    item.running = 0
+    item.isr_exit()
 
 
 class ItemMenu(Item):
