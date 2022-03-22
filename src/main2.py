@@ -5,6 +5,7 @@ from soft import menu_builder as mb
 
 
 def test_routine(item):
+    global CURRENT
     print("cedo il comando")
     CURRENT = item.children[0]
     CURRENT.routine(item._pin)
@@ -12,7 +13,6 @@ def test_routine(item):
 
 
 mb.MAINMENU.routine(test_routine, 10)
-
 CURRENT = mb.MAINMENU
 
 
