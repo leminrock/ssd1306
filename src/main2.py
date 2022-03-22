@@ -21,4 +21,7 @@ while True:
     if PREVIOUS:
         print("previous:", PREVIOUS.name)
     print(CURRENT.name)
+    if PREVIOUS != CURRENT:
+        PREVIOUS.isr_exit()
+        CURRENT.routine(test_routine, 10)
     time.sleep(0.5)
