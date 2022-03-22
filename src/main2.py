@@ -30,9 +30,9 @@ PREVIOUS = None
 
 while True:
     if PREVIOUS:
-        print("previous:", PREVIOUS.name)
+        print("previous:", PREVIOUS.name, end='\t')
 
-    print(CURRENT.name)
+    print("current:", CURRENT.name)
 
     if PREVIOUS and (PREVIOUS != CURRENT):
         PREVIOUS.isr_exit()
