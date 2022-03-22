@@ -1,3 +1,4 @@
+import time
 from abc import ABC, abstractmethod
 from soft import rock_logger as log
 from hard.hardware import RockButton
@@ -62,11 +63,15 @@ class Item(ABC):
 
 
 def test_routine(item):
-    print(item.children[0].name)
+    item_new = item.children[0]
+    item_new.routine(item._pin)
+    del item
+    item_new.loop()
 
 
 class ItemMenu(Item):
     def routine(self, pin):
+        self._pin = pin
         self.button = RockButton(pin)
         self.button.isr(test_routine, self)
 
@@ -75,7 +80,8 @@ class ItemMenu(Item):
 
     def loop(self):
         while True:
-            pass
+            print("inside loop", self.name)
+            time.sleep(0.5)
 
 
 class ItemPatch(Item):
