@@ -17,6 +17,6 @@ mb.MAINMENU.routine(test_routine, 10)
 CURRENT = mb.MAINMENU
 
 
-while True():
+while True:
     print(CURRENT.name)
     time.sleep(0.5)
