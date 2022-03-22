@@ -84,6 +84,9 @@ class ItemMenu(Item):
     def isr_exit(self):
         self.button.isrExit()
 
+    def loop(self):
+        pass
+
     def draw(self):
         pass
 
