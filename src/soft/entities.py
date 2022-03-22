@@ -83,7 +83,7 @@ class ItemMenu(Item):
 
     def isr_routine(self, pin):
         self._isr = RockButton(pin)
-        self._isr.isr(test_routine)
+        #self._isr.isr(test_routine)
 
     def isr_routine_start(self):
         pass
