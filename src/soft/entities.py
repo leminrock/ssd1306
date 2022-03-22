@@ -62,24 +62,12 @@ class Item(ABC):
         pass
 
 
-"""
-def test_routine(item):
-    print("setting running")
-    print("cedo il comando")
-    item_new = item.children[0]
-    item_new.routine(item._pin)
-    item_new.loop()
-    item.running = 0
-    item.isr_exit()
-"""
-
 
 class ItemMenu(Item):
     def routine(self, func, pin):
         self._pin = pin
         self.button = RockButton(pin)
         self.button.isr(func, self)
-        self.running = 0
 
     def isr_exit(self):
         self.button.isrExit()
@@ -90,18 +78,6 @@ class ItemMenu(Item):
     def draw(self):
         pass
 
-
-"""
-def loop(self):
-    self.running = 1
-
-    while True:
-        print("inside loop", self.name, "running", self.running)
-        time.sleep(0.5)
-
-        if self.running == 0:
-            break
-"""
 
 
 class ItemPatch(Item):
