@@ -63,9 +63,12 @@ class Item(ABC):
 
 
 def test_routine(item):
+    print(type(item))
     item_new = item.children[0]
     item_new.routine(item._pin)
-    del item
+    #item_new.loop()
+    print("setting running")
+    item.running = 0
     item_new.loop()
 
 
@@ -74,14 +77,21 @@ class ItemMenu(Item):
         self._pin = pin
         self.button = RockButton(pin)
         self.button.isr(test_routine, self)
+        self.running = 0
 
     def draw(self):
         pass
 
+
     def loop(self):
+        self.running = 1
+
         while True:
-            print("inside loop", self.name)
+            print("inside loop", self.name, "running", self.running)
             time.sleep(0.5)
+
+            if self.running == 0:
+                break
 
 
 class ItemPatch(Item):
