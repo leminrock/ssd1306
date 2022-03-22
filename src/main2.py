@@ -9,7 +9,6 @@ def test_routine(item):
     global PREVIOUS
     PREVIOUS = item
     CURRENT = item.children[0]
-    #CURRENT.routine(test_routine, item._pin)
 
 
 mb.MAINMENU.routine(test_routine, 10)
@@ -20,8 +19,11 @@ PREVIOUS = None
 while True:
     if PREVIOUS:
         print("previous:", PREVIOUS.name)
+
     print(CURRENT.name)
+
     if PREVIOUS and PREVIOUS != CURRENT:
-        PREVIOUS.isr_exit()
         CURRENT.routine(test_routine, 10)
+        PREVIOUS.isr_exit()
+
     time.sleep(0.5)
