@@ -61,8 +61,8 @@ class Item(ABC):
         pass
 
 
-def test_routine(gpio):
-    print("CIAOOOOOOOO")
+def test_routine(item):
+    print(item)
 
 
 class ItemMenu(Item):
