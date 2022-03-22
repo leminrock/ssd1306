@@ -69,7 +69,9 @@ def test_routine(item):
     # item_new.loop()
     print("setting running")
     item.running = 0
-    # item_new.loop()
+    item_new = item.children[0]
+    item_new.routine(item._pin)
+    item_new.loop()
 
 
 class ItemMenu(Item):
