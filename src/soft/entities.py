@@ -64,12 +64,12 @@ class Item(ABC):
 
 class ItemMenu(Item):
     def routine_forward(self, func, pin):
-        self._pin = pin
+        self._pinforward = pin
         self.forward = RockButton(pin)
         self.forward.isr(func, self)
 
     def routine_backward(self, func, pin):
-        self._pin = pin
+        self._pinbackward = pin
         self.backward = RockButton(pin)
         self.backward.isr(func, self)
 

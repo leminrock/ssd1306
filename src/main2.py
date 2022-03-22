@@ -34,10 +34,10 @@ while True:
 
     print(CURRENT.name)
 
-    if PREVIOUS and PREVIOUS != CURRENT:
+    if PREVIOUS and (PREVIOUS != CURRENT):
+        PREVIOUS.isr_exit()
         CURRENT.routine_forward(forward_routine, PIN_FORWARD)
         CURRENT.routine_backward(backward_routine, PIN_BACKWARD)
-        PREVIOUS.isr_exit()
         PREVIOUS = CURRENT
 
     time.sleep(0.5)
