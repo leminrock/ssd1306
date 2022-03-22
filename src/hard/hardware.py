@@ -1,5 +1,6 @@
 import mraa
 from hard import rotary_encoder as renc
+from soft import rock_logger as log
 
 
 class EncoderEC11:
@@ -58,6 +59,7 @@ class RockButton:
         self._pin = pin
         self.pin = mraa.Gpio(pin)
         self.pin.dir(mraa.DIR_IN)
+        log.INFO(f"{self.pin}")
 
     @property
     def n_pin(self):
