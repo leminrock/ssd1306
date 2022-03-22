@@ -1,45 +1,58 @@
 #!/usr/bin/env python3
 
-import time
-from soft import menu_builder as mb
+from pathlib import Path
 from soft import rock_logger as log
-
+from soft.entities import ItemMenu
 
 PIN_FORWARD = 8
 PIN_BACKWARD = 10
+PIN_ROTARY_1 = 11
+PIN_ROTARY_2 = 13
+
+PATCHESPATH = Path('../patches').resolve()
 
 
 def forward_routine(item):
-    global CURRENT
-    global PREVIOUS
+    global current
+    global previous
 
     if item.children[0]:
-        PREVIOUS = item
-        CURRENT = item.children[0]
+        previous = item
+        current = item.children[0]
 
 
 def backward_routine(item):
-    global CURRENT
-    global PREVIOUS
+    global current
+    global previous
 
     if item.parent:
-        PREVIOUS = item
-        CURRENT = item.parent
+        previous = item
+        current = item.parent
 
 
-mb.MAINMENU.routine_forward(forward_routine, PIN_FORWARD)
-mb.MAINMENU.routine_backward(backward_routine, PIN_BACKWARD)
-CURRENT = mb.MAINMENU
-PREVIOUS = None
+# Nodes
+MAINMENU = ItemMenu('MAIN')
+SUBMENU1 = ItemMenu('SUB1', parent=MAINMENU)
+SUBMENU2 = ItemMenu('SUB2', parent=SUBMENU1)
+
+# Relations
+MAINMENU.children = SUBMENU1
+SUBMENU1.children = SUBMENU2
+
+# ISR routines registration
+MAINMENU.routine_forward(PIN_FORWARD, forward_routine)
+MAINMENU.routine_backward(PIN_BACKWARD, backward_routine)
+
+# current Node
+current = MAINMENU
+previous = None
 
 
 while True:
-    if PREVIOUS and (PREVIOUS != CURRENT):
-        PREVIOUS.isr_exit()
-        CURRENT.routine_forward(forward_routine, PIN_FORWARD)
-        CURRENT.routine_backward(backward_routine, PIN_BACKWARD)
+    if previous and (previous != current):
+        previous.isr_exit()
+        current.routine_forward(forward_routine, PIN_FORWARD)
+        current.routine_backward(backward_routine, PIN_BACKWARD)
         log.INFO(
-            f"CHANGED!\tprevious: {PREVIOUS.name}\tcurrent: {CURRENT.name}")
-        PREVIOUS = CURRENT
-
-    #time.sleep(0.5)
+            f"CHANGED!\tprevious: {previous.name}\tcurrent: {current.name}")
+        previous = current

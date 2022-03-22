@@ -57,29 +57,29 @@ class Item(ABC):
     def draw(self):
         pass
 
-    @abstractmethod
-    def loop(self):
-        pass
-
-
-class ItemMenu(Item):
-    def routine_forward(self, func, pin):
-        self._pinforward = pin
+    def register_right_routine(self, pin, func):
+        """set isr_routine for right button"""
+        self._right_pin = pin
         self.forward = RockButton(pin)
-        self.forward.isr(func, self)
+        self._right_func = func
 
-    def routine_backward(self, func, pin):
-        self._pinbackward = pin
+    def register_left_routine(self, pin, func):
+        """set isr_routine for left button"""
+        self._left_pin = pin
         self.backward = RockButton(pin)
-        self.backward.isr(func, self)
+        self._left_func = func
+
+    def isr_enter(self):
+        """set isr_routine for left button"""
+        self.forward.isr(self._right_func, self)
+        self.backward.isr(self._left_func, self)
 
     def isr_exit(self):
         self.forward.isr_exit()
         self.backward.isr_exit()
 
-    def loop(self):
-        pass
 
+class ItemMenu(Item):
     def draw(self):
         pass
 
