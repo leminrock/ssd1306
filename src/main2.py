@@ -2,6 +2,7 @@
 
 import time
 from soft import menu_builder as mb
+from soft import rock_logger as log
 
 
 PIN_FORWARD = 8
@@ -29,15 +30,11 @@ PREVIOUS = None
 
 
 while True:
-    if PREVIOUS:
-        print("previous:", PREVIOUS.name, end='\t')
-
-    print("current:", CURRENT.name)
-
     if PREVIOUS and (PREVIOUS != CURRENT):
         PREVIOUS.isr_exit()
         CURRENT.routine_forward(forward_routine, PIN_FORWARD)
         CURRENT.routine_backward(backward_routine, PIN_BACKWARD)
         PREVIOUS = CURRENT
+        log.INFO(f"CHANGED!\tprevious: {PREVIOUS}\tcurrent: {CURRENT}")
 
     time.sleep(0.5)
