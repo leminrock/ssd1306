@@ -34,7 +34,7 @@ while True:
         PREVIOUS.isr_exit()
         CURRENT.routine_forward(forward_routine, PIN_FORWARD)
         CURRENT.routine_backward(backward_routine, PIN_BACKWARD)
+        log.INFO(f"CHANGED!\tprevious: {PREVIOUS.name}\tcurrent: {CURRENT.name}")
         PREVIOUS = CURRENT
-        log.INFO(f"CHANGED!\tprevious: {PREVIOUS}\tcurrent: {CURRENT}")
 
     time.sleep(0.5)

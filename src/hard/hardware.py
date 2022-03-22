@@ -59,7 +59,6 @@ class RockButton:
         self._pin = pin
         self.button = mraa.Gpio(pin)
         self.button.dir(mraa.DIR_IN)
-        log.INFO(f"{self.button}")
 
     @property
     def n_pin(self):
