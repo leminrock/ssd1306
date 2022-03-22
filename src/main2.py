@@ -6,10 +6,11 @@ from soft import menu_builder as mb
 
 def test_routine(item):
     global CURRENT
-    print("cedo il comando a", item.children[0], item.children[0].name)
-    CURRENT = item.children[0]
+    old_item = item
+    print("cedo il comando a", old_item.children[0], old_item.children[0].name)
+    #item.isr_exit()
+    CURRENT = old_item.children[0]
     #CURRENT.routine(test_routine, item._pin)
-    item.isr_exit()
 
 
 mb.MAINMENU.routine(test_routine, 10)
