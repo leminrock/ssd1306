@@ -70,7 +70,7 @@ class ItemMenu(Item):
         self.button.isr(func, self)
 
     def isr_exit(self):
-        self.button.isrExit()
+        self.button.isr_exit()
 
     def loop(self):
         pass
