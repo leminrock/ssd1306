@@ -62,22 +62,26 @@ class Item(ABC):
         pass
 
 
-
 class ItemMenu(Item):
-    def routine(self, func, pin):
+    def routine_forward(self, func, pin):
         self._pin = pin
-        self.button = RockButton(pin)
-        self.button.isr(func, self)
+        self.forward = RockButton(pin)
+        self.forward.isr(func, self)
+
+    def routine_backward(self, func, pin):
+        self._pin = pin
+        self.backward = RockButton(pin)
+        self.backward.isr(func, self)
 
     def isr_exit(self):
-        self.button.isr_exit()
+        self.forward.isr_exit()
+        self.backward.isr_exit()
 
     def loop(self):
         pass
 
     def draw(self):
         pass
-
 
 
 class ItemPatch(Item):
