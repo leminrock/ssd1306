@@ -1,7 +1,12 @@
-import coloredlogs
 import logging
+import coloredlogs
 
-coloredlogs.install()
+
+def config(name):
+    global logger
+    logger = logging.getLogger(name)
+    coloredlogs.install(
+        level='DEBUG', fmt='%(asctime)s,%(msecs)03d %(hostname)s %(name)s[%(process)d] %(levelname)s %(message)s')
 
 
 DISABLE = 0
@@ -9,17 +14,22 @@ DISABLE = 0
 
 def INFO(msg):
     if not DISABLE:
-        logging.info(msg)
+        logger.info(msg)
 
 
 def WARN(msg):
     if not DISABLE:
-        logging.warning(msg)
+        logger.warning(msg)
+
+
+def DEBUG(msg):
+    if not DISABLE:
+        logger.debug(msg)
 
 
 def ERROR(msg):
     if not DISABLE:
-        logging.error(bold(msg))
+        logger.error(bold(msg))
 
 
 def bold(msg):

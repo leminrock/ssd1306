@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
 
 from pathlib import Path
-from soft import rock_logger as log
 from soft.entities import ItemMenu
+from soft import rock_logger as log
+
+log.config(__name__)
 
 PIN_FORWARD = 8
 PIN_BACKWARD = 10
@@ -11,6 +13,8 @@ PIN_ROTARY_2 = 13
 
 PATCHESPATH = Path('../patches').resolve()
 
+
+# routines
 
 def forward_routine(item):
     global current

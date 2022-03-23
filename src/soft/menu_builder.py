@@ -3,6 +3,7 @@ from soft.entities import Item, ItemMenu
 #from soft.graph_menu import GraphMenu
 #from patcher.patch import set_patch
 # from net.hotspot import
+from soft import rock_logger as log
 
 """
 # pages
