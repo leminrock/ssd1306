@@ -3,6 +3,7 @@ from soft import rock_logger as log
 
 EMPTY = ''
 
+
 class Pager:
     def __init__(self, items=[], pos=0):
         self._items = items
@@ -10,8 +11,8 @@ class Pager:
         self._max = self._length - 1
         self._pos = pos
 
-        log.INFO(self.__str__())
-        log.INFO(self.__dict__)
+        log.info(self.__str__())
+        log.info(self.__dict__)
 
     def populate(self, items, pos=0):
         self._items = items
@@ -42,10 +43,10 @@ class PagerShort(Pager):
     def draw(self, selected=0, title='main title', drawback=False):
         items = [x.name for x in self._items]
 
-        log.INFO(f"{self.__str__()}")
-        log.INFO(f"position:\t{self.pos}")
-        log.INFO(f"items:\t{items}")
-        log.INFO(f"position:\t{self.get_selected()}")
+        log.info(f"{self.__str__()}")
+        log.info(f"position:\t{self.pos}")
+        log.info(f"items:\t{items}")
+        log.info(f"position:\t{self.get_selected()}")
 
         roled.drawmenu(items, selected, title, drawback)
 
@@ -58,17 +59,17 @@ class PagerLong(Pager):
             self._pos = newpos
             self.draw()
         else:
-            log.WARN("new pos NOT set")
+            log.warn("new pos NOT set")
 
     def draw(self, title='patches', drawback=False):
         items = [x.name for x in self._items]
         new_items = self.decorate_list(items)
-        fragment = new_items[self._pos:self._pos+5] 
+        fragment = new_items[self._pos:self._pos+5]
 
-        log.INFO(f"{self.__str__()}")
-        log.INFO(f"position:\t{self.pos}")
-        log.INFO(f"items:\t{items}")
-        log.INFO(f"position:\t{self.get_selected()}")
+        log.info(f"{self.__str__()}")
+        log.info(f"position:\t{self.pos}")
+        log.info(f"items:\t{items}")
+        log.info(f"position:\t{self.get_selected()}")
 
         roled.drawmenu(fragment, 2, title, drawback)
 

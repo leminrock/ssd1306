@@ -25,20 +25,20 @@ def set_patch(*args):
         time.sleep(2)
         res += _service(pdservice, 'restart')
     else:
-        log.ERROR(
+        log.error(
             f"FUNCTION set_patch() NEEDS 3 ARGS, BUT {len(args)} PROVIDED")
         res += 1
 
-    log.INFO(f"response: {res}")
+    log.info(f"response: {res}")
 
     if not res:
         name = args[0].parts[-2]
         oled.drawmenu([name.upper()], 0, "PATCH LOADED")
-        log.INFO("OK")
+        log.info("OK")
         return 0
     else:
         oled.drawmenu(["ERROR"], 0, "PATCH NOT LOADED")
-        log.ERROR("task executed with errors")
+        log.error("task executed with errors")
         return 1
 
 
@@ -51,7 +51,7 @@ def _set(patchname):
     :param patchname: puredata file (with complete path)
     :type patchname: pathlib.PosixPath
     """
-    log.INFO(f"SET PATCH {patchname.stem}")
+    log.info(f"SET PATCH {patchname.stem}")
     path = str(patchname.resolve())
     script = Path(SERVICESCRIPT).resolve()
 
@@ -63,17 +63,17 @@ def _set(patchname):
         script.chmod(0o755)
         return 0
     except:
-        log.ERROR("NON DEFINED ERROR")
+        log.error("NON DEFINED ERROR")
         return 1
 
 
 def _service(service, action):
-    log.INFO(f"{action.upper()} SERVICE {service.upper()}")
+    log.info(f"{action.upper()} SERVICE {service.upper()}")
     proc = sproc.run([SYSTEMD_COMMAND, action, service],
                      capture_output=True)
 
     if proc.returncode:
-        log.ERROR(proc.stderr.decode('utf-8').strip('\n').upper())
+        log.error(proc.stderr.decode('utf-8').strip('\n').upper())
         return 1
     else:
         return 0

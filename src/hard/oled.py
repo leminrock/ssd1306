@@ -23,7 +23,7 @@ FONT = ImageFont.truetype(PATHFONT, STEP)
 ########################### - API - ###########################
 
 def drawmenu(items, selected=None, title='main menu', drawback=False):
-    log.INFO(f"CALL drawmenu() with items {items}")
+    log.info(f"CALL drawmenu() with items {items}")
     with canvas(DEVICE) as draw:
         filler = 'white'
 
@@ -51,7 +51,7 @@ def _drawskeleton(draw, title, drawback=False):
 
     draw.text(
         (int(RIGHT / 2 - titlesize[0] / 2), TOP), title, font=FONT, fill='white')
-        
+
     if drawback:
         draw.text((RIGHT - size[0], DOWN - size[1]),
                   text, font=FONT, fill='white')
