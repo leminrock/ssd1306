@@ -14,11 +14,9 @@ class Item(ABC):
         self._parent = parent
         self._children = []
 
-    def is_leaf(self):
-        return self._leaf
-
-    def set_leaf(self, leaf=True):
-        self._leaf = leaf
+    ################################
+    # getter/setter
+    ################################
 
     @property
     def children(self):
@@ -54,9 +52,15 @@ class Item(ABC):
     def name(self, name):
         self._name = name
 
-    @abstractmethod
-    def draw(self):
-        pass
+    ################################
+    # common methods
+    ################################
+
+    def is_leaf(self):
+        return self._leaf
+
+    def set_leaf(self, leaf=True):
+        self._leaf = leaf
 
     def register_right_routine(self, pin, func):
         """set isr_routine for right button"""
@@ -86,26 +90,33 @@ class Item(ABC):
     def rotary_isr_exit():
         pass
 
+    ################################
+    # abstact methos
+    ################################
+
+    @abstractmethod
+    def refresh_name(self):
+        """update name of the instance based on his status"""
+        pass
+
+    @abstractmethod
+    def draw(self):
+        pass
+
 
 class ItemMenu(Item):
+    def refresh_name(self):
+        return self.name
+
     def draw(self):
         pass
 
 
 class ItemPatch(Item):
+    def refresh_name(self):
+        return self.name
+
     def draw(self):
-        pass
-
-    def isr_routine(self):
-        pass
-
-    def isr_routine_start(self):
-        pass
-
-    def isr_routine_stop(self):
-        pass
-
-    def loop(self):
         pass
 
     @property
