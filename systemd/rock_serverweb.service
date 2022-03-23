@@ -4,8 +4,6 @@ StartLimitIntervalSec=0
 
 [Service]
 Type=oneshot
-#Restart=always
-#RestartSec=1
 User=root
 WorkingDirectory=/home/odisseo/Documenti/express_temp
 Environment="JACK_NO_AUDIO_RESERVATION=1"
