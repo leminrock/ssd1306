@@ -1,6 +1,6 @@
 import mraa
 from hard import rotary_encoder as renc
-from soft import rock_logger as log
+from common import rock_logger as log
 
 log.config(__name__)
 

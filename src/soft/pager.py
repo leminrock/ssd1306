@@ -1,5 +1,5 @@
 from hard import oled as roled
-from soft import rock_logger as log
+from common import rock_logger as log
 
 log.config(__name__)
 

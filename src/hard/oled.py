@@ -4,7 +4,7 @@ from luma.core.interface.serial import i2c
 from luma.core.render import canvas
 from luma.oled.device import ssd1306
 from PIL import ImageFont
-from soft import rock_logger as log
+from common import rock_logger as log
 
 log.config(__name__)
 

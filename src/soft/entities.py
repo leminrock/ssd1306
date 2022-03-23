@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from soft import rock_logger as log
+from common import rock_logger as log
 from hard.hardware import RockButton, EncoderEC11
 
 log.config(__name__)

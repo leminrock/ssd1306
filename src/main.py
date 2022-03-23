@@ -3,7 +3,7 @@
 from soft.pager import PagerShort, PagerLong
 from soft import menu_builder as menu
 from soft.menu_builder import Graph
-from soft import rock_logger as log
+from common import rock_logger as log
 from hard.hardware import EncoderEC11, RockButton
 
 PIN1 = 11

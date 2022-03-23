@@ -2,7 +2,7 @@
 
 from pathlib import Path
 from soft.entities import ItemMenu
-from soft import rock_logger as log
+from common import rock_logger as log
 
 log.config(__name__)
 
