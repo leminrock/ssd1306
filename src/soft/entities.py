@@ -70,13 +70,20 @@ class Item(ABC):
         self._left_func = func
 
     def isr_enter(self):
-        """set isr_routine for left button"""
+        """active button routine interrupts"""
         self.forward.isr(self._right_func, self)
         self.backward.isr(self._left_func, self)
 
     def isr_exit(self):
+        """exit button routine interrupts"""
         self.forward.isr_exit()
         self.backward.isr_exit()
+
+    def rotary_isr_enter():
+        pass
+
+    def rotary_isr_exit():
+        pass
 
 
 class ItemMenu(Item):
