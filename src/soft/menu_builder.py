@@ -5,6 +5,8 @@ from soft.entities import Item, ItemMenu
 # from net.hotspot import
 from soft import rock_logger as log
 
+log.config(__name__)
+
 """
 # pages
 MAINMENU = Item('ROOT')

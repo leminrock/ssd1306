@@ -6,6 +6,8 @@ from soft import rock_logger as log
 from pathlib import Path
 from hard import oled
 
+log.config(__name__)
+
 COMMAND = "puredata -nogui -jack"
 SERVICESCRIPT = "/home/rock/.puredata"
 SHEBANG = "#!/usr/bin/env bash\n\n"

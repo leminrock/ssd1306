@@ -6,6 +6,8 @@ from luma.oled.device import ssd1306
 from PIL import ImageFont
 from soft import rock_logger as log
 
+log.config(__name__)
+
 WIDTH = 128
 HEIGHT = 64
 STEP = int(HEIGHT / 7)

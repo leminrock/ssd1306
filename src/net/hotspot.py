@@ -5,6 +5,8 @@ from soft import rock_logger as log
 from pathlib import Path
 from hard import oled
 
+log.config(__name__)
+
 
 def check_network():
     pass
