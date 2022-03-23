@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 from soft import rock_logger as log
-from hard.hardware import RockButton
+from hard.hardware import RockButton, EncoderEC11
 
 log.config(__name__)
 
@@ -20,10 +20,12 @@ class Item(ABC):
 
     @property
     def children(self):
+        """get children list of instances"""
         return self._children
 
     @children.setter
     def children(self, children):
+        """set children list of instances"""
         if isinstance(children, list):
             self._children = children
         else:
@@ -31,25 +33,31 @@ class Item(ABC):
 
     @property
     def children_names(self):
+        """get children names"""
         return [item.name for item in self._children]
 
     def add_child(self, item):
+        """add a child"""
         self._children.append(item)
 
     @property
     def parent(self):
+        """get parent instance"""
         return self._parent
 
     @parent.setter
     def parent(self, parent):
+        """set parent instance"""
         self._parent = parent
 
     @property
     def name(self):
+        """get Item name"""
         return self._name
 
     @name.setter
     def name(self, name):
+        """set Item name"""
         self._name = name
 
     ################################
@@ -91,7 +99,7 @@ class Item(ABC):
         pass
 
     ################################
-    # abstact methos
+    # abstact methods
     ################################
 
     @abstractmethod
