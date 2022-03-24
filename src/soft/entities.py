@@ -8,10 +8,12 @@ log.config(__name__)
 class Item(ABC):
     def __init__(self, name=None,
                  leaf=False,
-                 parent=None):
+                 parent=None,
+                 pos=0):
         self._name = name.upper()
         self._leaf = leaf
         self._parent = parent
+        self._pos = pos
         self._children = []
 
     ################################
@@ -141,3 +143,22 @@ class ItemPatch(Item):
 
     def command(self):
         self._func(*self._args)
+
+
+class Children:
+    def __init__(self, items=[]):
+        self._children = items
+        self._n_children = len(items)
+
+    @property
+    def n_children(self):
+        return self._n_children
+
+    def set_children(self, children: list = []):
+        """set children replacing all previous"""
+        self._children = children
+        self._n_children = len(self._children)
+
+    def get_children(self):
+        """get children"""
+        return self._children
