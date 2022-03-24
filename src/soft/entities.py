@@ -22,12 +22,16 @@ class Item(ABC):
 
     @property
     def children(self):
-        """get children list of instances"""
+        """
+        get children list of instances
+        """
         return self._children
 
     @children.setter
     def children(self, children):
-        """set children list of instances"""
+        """
+        set children list of instances
+        """
         if isinstance(children, list):
             self._children = children
         else:
@@ -35,35 +39,47 @@ class Item(ABC):
 
     @property
     def children_names(self):
-        """get children names"""
+        """
+        get children names
+        """
         return [item.name for item in self._children]
 
     def add_child(self, item):
-        """add a child"""
+        """
+        add a child
+        """
         self._children.append(item)
 
     @property
     def parent(self):
-        """get parent instance"""
+        """
+        get parent instance
+        """
         return self._parent
 
     @parent.setter
     def parent(self, parent):
-        """set parent instance"""
+        """
+        set parent instance
+        """
         self._parent = parent
 
     @property
     def name(self):
-        """get Item name"""
+        """
+        get Item name
+        """
         return self._name
 
     @name.setter
     def name(self, name):
-        """set Item name"""
+        """
+        set Item name
+        """
         self._name = name
 
     ################################
-    # common methods
+    # methods
     ################################
 
     def is_leaf(self):
@@ -73,24 +89,32 @@ class Item(ABC):
         self._leaf = leaf
 
     def register_right_routine(self, pin, func):
-        """set isr_routine for right button"""
+        """
+        set isr_routine for right button
+        """
         self._right_pin = pin
         self.forward = RockButton(pin)
         self._right_func = func
 
     def register_left_routine(self, pin, func):
-        """set isr_routine for left button"""
+        """
+        set isr_routine for left button
+        """
         self._left_pin = pin
         self.backward = RockButton(pin)
         self._left_func = func
 
     def isr_enter(self):
-        """active button routine interrupts"""
+        """
+        active button routine interrupts
+        """
         self.forward.isr(self._right_func, self)
         self.backward.isr(self._left_func, self)
 
     def isr_exit(self):
-        """exit button routine interrupts"""
+        """
+        exit button routine interrupts
+        """
         self.forward.isr_exit()
         self.backward.isr_exit()
 
@@ -100,13 +124,16 @@ class Item(ABC):
     def rotary_isr_exit():
         pass
 
-    ################################
-    # abstact methods
-    ################################
+    @abstractmethod
+    def register_rotary_routine(self, pin1=None, pin2=None, func=None):
+        pass
+
 
     @abstractmethod
-    def refresh_name(self):
-        """update name of the instance based on his status"""
+    def update_name(self):
+        """
+        update name of the instance based on his status
+        """
         pass
 
     @abstractmethod
@@ -115,7 +142,7 @@ class Item(ABC):
 
 
 class ItemMenu(Item):
-    def refresh_name(self):
+    def update_name(self):
         return self.name
 
     def draw(self):
@@ -155,10 +182,14 @@ class Children:
         return self._n_children
 
     def set_children(self, children: list = []):
-        """set children replacing all previous"""
+        """
+        set children replacing all previous
+        """
         self._children = children
         self._n_children = len(self._children)
 
     def get_children(self):
-        """get children"""
+        """
+        get children
+        """
         return self._children
