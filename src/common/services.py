@@ -7,6 +7,7 @@ RESTART = 'restart'
 STOP = 'stop'
 ENABLE = 'enable'
 DISABLE = 'disable'
+SHOW = 'show'
 
 
 # API
@@ -22,7 +23,7 @@ def systemctl(service, action):
     :return: exit code
     :rtype: int
     """
-    capture = sproc.run([COMMAND, action, service], capture_output=True)
+    capture = _send_command(service, action)
 
     if capture.stderr:
         log.warn(capture.stderr)
@@ -30,11 +31,10 @@ def systemctl(service, action):
     if capture.stdout:
         log.debug(capture.stdout)
 
-    else:
-        return capture.returncode
+    return capture.returncode
 
 
-def get_status(service):
+def is_active(service):
     """get status of a systemd service
 
     :param service: service to retrieve status
@@ -42,15 +42,18 @@ def get_status(service):
     :return: response
     :rtype: bool
     """
-    capture = sproc.run([COMMAND, 'show', service], capture_output=True)
-    # return res.stdout.decode('utf-8')
-    res = __parse_status(capture.stdout.decode('utf-8'))
+    capture = _send_command(service, SHOW)
+    res = _parse_status(capture.stdout.decode('utf-8'))
     return res == 'active'
 
 
 # internal functions
 
-def __parse_status(s):
+def _send_command(service, action):
+    return sproc.run([COMMAND, action, service], capture_output=True)
+
+
+def _parse_status(s):
     splitted = s.split('\n')
     splitted = [x.split('=') for x in splitted]
 
