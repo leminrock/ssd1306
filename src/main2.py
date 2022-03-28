@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 
+from http.client import HTTP_VERSION_NOT_SUPPORTED
 from pathlib import Path
-from soft.entities import ItemMenu
+from soft.entities import ItemMenu, ItemPatch, ItemApp
 from common import rock_logger as log
 
 log.config(__name__)
@@ -36,12 +37,14 @@ def backward_routine(item):
 
 # Nodes
 MAINMENU = ItemMenu('MAIN')
-SUBMENU1 = ItemMenu('SUB1', parent=MAINMENU)
-SUBMENU2 = ItemMenu('SUB2', parent=SUBMENU1)
+WEBSERVER = ItemMenu('ACTIVE WEBSERVER', parent=MAINMENU)
+MIDI = ItemApp('MIDI', parent=MAINMENU)
+HOTSPOT = ItemApp('ACTIVE HOTSPOT', parent=MAINMENU)
+WIFI = ItemApp('START WIFI', parent=MAINMENU)
+PATCHES = ItemPatch('PATCHES', parent=MAINMENU)
 
 # Relations
-MAINMENU.children = SUBMENU1
-SUBMENU1.children = SUBMENU2
+MAINMENU.children = [PATCHES, WEBSERVER, MIDI, HOTSPOT, WIFI]
 
 # ISR routines registration
 MAINMENU.routine_forward(PIN_FORWARD, forward_routine)

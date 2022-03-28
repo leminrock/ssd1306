@@ -16,9 +16,7 @@ class Item(ABC):
         self._pos = pos
         self._children = []
 
-    ################################
     # getter/setter
-    ################################
 
     @property
     def children(self):
@@ -78,9 +76,7 @@ class Item(ABC):
         """
         self._name = name
 
-    ################################
     # methods
-    ################################
 
     def is_leaf(self):
         return self._leaf
@@ -149,7 +145,7 @@ class ItemMenu(Item):
 
 
 class ItemPatch(Item):
-    def refresh_name(self):
+    def update_name(self):
         return self.name
 
     def draw(self):
@@ -171,24 +167,9 @@ class ItemPatch(Item):
         self._func(*self._args)
 
 
-class Children:
-    def __init__(self, items=[]):
-        self._children = items
-        self._n_children = len(items)
+class ItemApp(Item):
+    def update_name(self):
+        return self.name
 
-    @property
-    def n_children(self):
-        return self._n_children
-
-    def set_children(self, children: list = []):
-        """
-        set children replacing all previous
-        """
-        self._children = children
-        self._n_children = len(self._children)
-
-    def get_children(self):
-        """
-        get children
-        """
-        return self._children
+    def draw(self):
+        pass
