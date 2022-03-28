@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import time
 from http.client import HTTP_VERSION_NOT_SUPPORTED
 from pathlib import Path
 from soft.entities import ItemMenu, ItemPatch, ItemApp
@@ -63,3 +64,6 @@ while True:
         log.INFO(
             f"CHANGED!\tprevious: {previous.name}\tcurrent: {current.name}")
         previous = current
+    else:
+        print("not changed")
+    time.sleep(0.25)
