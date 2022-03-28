@@ -21,7 +21,8 @@ PATCHESPATH = Path('../patches').resolve()
 def forward_routine(item):
     global current
     global previous
-
+    
+    log.info("press forward")
     if item.children[0]:
         previous = item
         current = item.children[0]
@@ -61,7 +62,7 @@ while True:
         previous.isr_exit()
         current.register_right_routine(forward_routine, PIN_FORWARD)
         current.register_left_routine(backward_routine, PIN_BACKWARD)
-        log.INFO(
+        log.info(
             f"CHANGED!\tprevious: {previous.name}\tcurrent: {current.name}")
         previous = current
     else:
