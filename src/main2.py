@@ -47,8 +47,8 @@ PATCHES = ItemPatch('PATCHES', parent=MAINMENU)
 MAINMENU.children = [PATCHES, WEBSERVER, MIDI, HOTSPOT, WIFI]
 
 # ISR routines registration
-MAINMENU.routine_forward(PIN_FORWARD, forward_routine)
-MAINMENU.routine_backward(PIN_BACKWARD, backward_routine)
+MAINMENU.register_right_routine(PIN_FORWARD, forward_routine)
+MAINMENU.register_left_routine(PIN_BACKWARD, backward_routine)
 
 # current Node
 current = MAINMENU
@@ -58,8 +58,8 @@ previous = None
 while True:
     if previous and (previous != current):
         previous.isr_exit()
-        current.routine_forward(forward_routine, PIN_FORWARD)
-        current.routine_backward(backward_routine, PIN_BACKWARD)
+        current.register_right_routine(forward_routine, PIN_FORWARD)
+        current.register_left_routine(backward_routine, PIN_BACKWARD)
         log.INFO(
             f"CHANGED!\tprevious: {previous.name}\tcurrent: {current.name}")
         previous = current
