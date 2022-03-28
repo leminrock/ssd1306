@@ -53,6 +53,12 @@ MAINMENU.register_right_routine(PIN_FORWARD, forward_routine)
 MAINMENU.register_left_routine(PIN_BACKWARD, backward_routine)
 PATCHES.register_right_routine(PIN_FORWARD, forward_routine)
 PATCHES.register_left_routine(PIN_BACKWARD, backward_routine)
+WEBSERVER.register_right_routine(PIN_FORWARD, forward_routine)
+WEBSERVER.register_left_routine(PIN_BACKWARD, backward_routine)
+HOTSPOT.register_right_routine(PIN_FORWARD, forward_routine)
+HOTSPOT.register_left_routine(PIN_BACKWARD, backward_routine)
+WIFI.register_right_routine(PIN_FORWARD, forward_routine)
+WIFI.register_left_routine(PIN_BACKWARD, backward_routine)
 
 # current Node
 current = MAINMENU

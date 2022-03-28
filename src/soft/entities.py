@@ -114,11 +114,14 @@ class Item(ABC):
         self.forward.isr_exit()
         self.backward.isr_exit()
 
-    def rotary_isr_enter():
-        pass
+    def register_rotary(self, pin1, pin2):
+        self.rotary = EncoderEC11(pin1, pin2)
 
-    def rotary_isr_exit():
-        pass
+    def rotary_isr_enter(self):
+        self.rotary.isr()
+
+    def rotary_isr_exit(self):
+        self.rotary.isr_exit()
 
     # @abstractmethod
     # def register_rotary_routine(self, pin1=None, pin2=None, func=None):
