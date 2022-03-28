@@ -51,6 +51,8 @@ MAINMENU.children = [PATCHES, WEBSERVER, MIDI, HOTSPOT, WIFI]
 # ISR routines registration
 MAINMENU.register_right_routine(PIN_FORWARD, forward_routine)
 MAINMENU.register_left_routine(PIN_BACKWARD, backward_routine)
+PATCHES.register_right_routine(PIN_FORWARD, forward_routine)
+PATCHES.register_left_routine(PIN_BACKWARD, backward_routine)
 
 # current Node
 current = MAINMENU
@@ -62,8 +64,7 @@ if __name__ == '__main__':
     while True:
         if previous and (previous != current):
             previous.isr_exit()
-            current.register_right_routine(PIN_FORWARD, forward_routine)
-            current.register_left_routine(PIN_BACKWARD, backward_routine)
+            current.isr_enter()
             log.info(
                 f"CHANGED!\tprevious: {previous.name}\tcurrent: {current.name}")
             previous = current
