@@ -54,7 +54,6 @@ class EncoderEC11:
 
     @staticmethod
     def routine(args):
-        log.info("moved rotary")
         args.tick()
 
 

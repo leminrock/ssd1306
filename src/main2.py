@@ -79,3 +79,9 @@ if __name__ == '__main__':
             log.info(
                 f"CHANGED!\tprevious: {previous.name}\tcurrent: {current.name}")
             previous = current
+
+        direction = current.rotary.refresh()
+
+        if direction:
+            # current_page.update(direction)
+            log.INFO(f"direction:\t{direction}")
