@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 
 import time
-from http.client import HTTP_VERSION_NOT_SUPPORTED
 from pathlib import Path
 from soft.entities import ItemMenu, ItemPatch, ItemApp
 from common import rock_logger as log
@@ -21,8 +20,9 @@ PATCHESPATH = Path('../patches').resolve()
 def forward_routine(item):
     global current
     global previous
-    
-    log.info("press forward")
+
+    log.info("pressed forward")
+
     if item.children[0]:
         previous = item
         current = item.children[0]
@@ -56,15 +56,17 @@ MAINMENU.register_left_routine(PIN_BACKWARD, backward_routine)
 current = MAINMENU
 previous = None
 
+current.isr_enter()
 
-while True:
-    if previous and (previous != current):
-        previous.isr_exit()
-        current.register_right_routine(forward_routine, PIN_FORWARD)
-        current.register_left_routine(backward_routine, PIN_BACKWARD)
-        log.info(
-            f"CHANGED!\tprevious: {previous.name}\tcurrent: {current.name}")
-        previous = current
-    else:
-        print("not changed")
-    time.sleep(0.25)
+if __name__ == '__main__':
+    while True:
+        if previous and (previous != current):
+            previous.isr_exit()
+            current.register_right_routine(forward_routine, PIN_FORWARD)
+            current.register_left_routine(backward_routine, PIN_BACKWARD)
+            log.info(
+                f"CHANGED!\tprevious: {previous.name}\tcurrent: {current.name}")
+            previous = current
+        else:
+            print("not changed")
+        time.sleep(0.25)
