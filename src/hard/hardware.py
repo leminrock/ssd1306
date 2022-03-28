@@ -35,7 +35,6 @@ class EncoderEC11:
         self._enc.tick()
 
     def isr(self):
-        log.info("moved rotary")
         self.pin1.isr(mraa.EDGE_BOTH, self.routine, self._enc)
         self.pin2.isr(mraa.EDGE_BOTH, self.routine, self._enc)
 
@@ -55,6 +54,7 @@ class EncoderEC11:
 
     @staticmethod
     def routine(args):
+        log.info("moved rotary")
         args.tick()
 
 
