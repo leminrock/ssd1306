@@ -128,7 +128,6 @@ class Item(ABC):
     def register_rotary_routine(self, pin1=None, pin2=None, func=None):
         pass
 
-
     @abstractmethod
     def update_name(self):
         """
