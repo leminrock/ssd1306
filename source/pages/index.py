@@ -9,3 +9,5 @@ HOTSPOT = ItemApp('ACTIVE HOTSPOT', parent=MAINMENU)
 WIFI = ItemApp('START WIFI', parent=MAINMENU)
 PATCHES = ItemPatch('PATCHES', parent=MAINMENU)
 """
+
+MAINMENU = mainmenu.MAINMENU
