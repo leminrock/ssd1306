@@ -1,5 +1,6 @@
 # Nodes
-from pages import mainmenu
+from pages import mainmenu, webserver
+from soft.entities import Status
 
 """
 MAINMENU = ItemMenu('MAIN')
@@ -10,4 +11,9 @@ WIFI = ItemApp('START WIFI', parent=MAINMENU)
 PATCHES = ItemPatch('PATCHES', parent=MAINMENU)
 """
 
+
 MAINMENU = mainmenu.MAINMENU
+WEBSERVER = webserver.WEBSERVER
+
+
+mainstatus = Status(current=MAINMENU)

@@ -1,0 +1,36 @@
+from soft.entities import ItemMenu
+from common import rock_logger as log
+from source.main3 import MIDI
+
+log.config(__name__)
+
+PIN_FORWARD = 8
+PIN_BACKWARD = 10
+PIN_ROTARY_1 = 11
+PIN_ROTARY_2 = 13
+
+# routines
+
+
+def forward_routine(state_obj):
+    log.info("pressed midi forward")
+    item = state_obj.item
+
+    if item.chidren[0]:
+        state_obj.previous = item
+        state_obj.current = item.chidren[0]
+
+
+def backward_routine(state_obj):
+    log.info("pressed midi backward")
+    item = state_obj.item
+
+    if item.parent:
+        state_obj.previous = item
+        state_obj.current = item.parent
+
+
+MIDI = ItemMenu('MIDI')
+MIDI.register_right_routine(PIN_FORWARD, forward_routine)
+MIDI.register_left_routine(PIN_BACKWARD, backward_routine)
+MIDI.register_rotary(PIN_ROTARY_1, PIN_ROTARY_2)

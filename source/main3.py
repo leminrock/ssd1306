@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 
-import time
-from pathlib import Path
-from soft.entities import ItemMenu, ItemPatch, ItemApp, Status
+#import time
+#from pathlib import Path
+#from soft.entities import ItemMenu, ItemPatch, ItemApp, Status
+from pages import index
 from common import rock_logger as log
 
 log.config(__name__)
@@ -12,7 +13,7 @@ PIN_BACKWARD = 10
 PIN_ROTARY_1 = 11
 PIN_ROTARY_2 = 13
 
-PATCHESPATH = Path('../patches').resolve()
+#PATCHESPATH = Path('../patches').resolve()
 
 
 # routines
@@ -20,7 +21,7 @@ PATCHESPATH = Path('../patches').resolve()
 """
 def forward_routine(item):
     global current
-    global mainstatus.previous
+    global previous
 
     log.info("pressed forward")
 
@@ -31,7 +32,7 @@ def forward_routine(item):
 
 def backward_routine(item):
     global current
-    global mainstatus.previous
+    global previous
 
     if item.parent:
         mainstatus.previous = item
@@ -74,7 +75,8 @@ current.isr_enter()
 current.rotary_isr_enter()
 """
 
-mainstatus = Status(current=MAINMENU)
+#mainstatus = Status(current=MAINMENU)
+mainstatus = index.mainstatus
 mainstatus.current.isr_enter()
 mainstatus.current.rotary_isr_enter()
 
