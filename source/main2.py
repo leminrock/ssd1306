@@ -2,7 +2,7 @@
 
 import time
 from pathlib import Path
-from soft.entities import ItemMenu, ItemPatch, ItemApp
+from soft.entities import ItemMenu, ItemPatch, ItemApp, Status
 from common import rock_logger as log
 
 log.config(__name__)
@@ -19,21 +19,21 @@ PATCHESPATH = Path('../patches').resolve()
 
 def forward_routine(item):
     global current
-    global previous
+    global mainstatus.previous
 
     log.info("pressed forward")
 
     if item.children[0]:
-        previous = item
+        mainstatus.previous = item
         current = item.children[0]
 
 
 def backward_routine(item):
     global current
-    global previous
+    global mainstatus.previous
 
     if item.parent:
-        previous = item
+        mainstatus.previous = item
         current = item.parent
 
 
@@ -63,24 +63,30 @@ WIFI.register_right_routine(PIN_FORWARD, forward_routine)
 WIFI.register_left_routine(PIN_BACKWARD, backward_routine)
 
 # current Node
+"""
 current = MAINMENU
 previous = None
 
 current.isr_enter()
 current.rotary_isr_enter()
+"""
+
+mainstatus = Status(current=MAINMENU)
+mainstatus.current.isr_enter()
+mainstatus.current.rotary_isr_enter()
 
 if __name__ == '__main__':
     while True:
-        if previous and (previous != current):
-            previous.isr_exit()
-            previous.rotary_isr_exit()
-            current.isr_enter()
-            current.rotary_isr_enter()
+        if mainstatus.previous and (mainstatus.previous != mainstatus.current):
+            mainstatus.previous.isr_exit()
+            mainstatus.previous.rotary_isr_exit()
+            mainstatus.current.isr_enter()
+            mainstatus.current.rotary_isr_enter()
             log.info(
-                f"CHANGED!\tprevious: {previous.name}\tcurrent: {current.name}")
-            previous = current
+                f"CHANGED!\tmainstatus.previous: {mainstatus.previous.name}\tcurrent: {mainstatus.current.name}")
+            mainstatus.previous = mainstatus.current
 
-        direction = current.rotary.refresh()
+        direction = mainstatus.current.rotary.refresh()
 
         if direction:
             # current_page.update(direction)

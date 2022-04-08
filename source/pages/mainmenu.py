@@ -10,7 +10,7 @@ PIN_ROTARY_2 = 13
 
 # routines
 
-
+"""
 def forward_routine(item):
     global current
     global previous
@@ -20,8 +20,28 @@ def forward_routine(item):
     if item.children[0]:
         previous = item
         current = item.children[0]
+"""
 
 
+def forward_routine(state_obj):
+    log.info("pressed forward")
+    item = state_obj.item
+
+    if item.chidren[0]:
+        state_obj.previous = item
+        state_obj.current = item.chidren[0]
+
+
+def backward_routine(state_obj):
+    log.info("pressed backward")
+    item = state_obj.item
+
+    if item.parent:
+        state_obj.previous = item
+        state_obj.current = item.parent
+
+
+"""
 def backward_routine(item):
     global current
     global previous
@@ -29,7 +49,7 @@ def backward_routine(item):
     if item.parent:
         previous = item
         current = item.parent
-
+"""
 
 MAINMENU = ItemMenu('MAIN')
 MAINMENU.register_right_routine(PIN_FORWARD, forward_routine)
