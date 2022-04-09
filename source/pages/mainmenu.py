@@ -19,12 +19,15 @@ def forward_routine(state_obj):
     print(item.children[0], item.children[0].name)
 
     if item.chidren[0]:
-        #log.debug(f"select child from: {MAINSTATUS.current.children_names}")
-        print("OK")
-        #MAINSTATUS.previous = item
-        #MAINSTATUS.current = item.chidren[0]
-        #log.info(f"previous: {MAINSTATUS.previous}")
-        #log.info(f"current: {MAINSTATUS.current}")
+        print("ha senso")
+
+    # if item.chidren[0]:
+    #log.debug(f"select child from: {MAINSTATUS.current.children_names}")
+    # print("OK")
+    #MAINSTATUS.previous = item
+    #MAINSTATUS.current = item.chidren[0]
+    #log.info(f"previous: {MAINSTATUS.previous}")
+    #log.info(f"current: {MAINSTATUS.current}")
 
 
 def backward_routine(state_obj):
