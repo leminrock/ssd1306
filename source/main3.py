@@ -17,8 +17,8 @@ if __name__ == '__main__':
             MAINSTATUS.previous.rotary_isr_exit()
             MAINSTATUS.current.isr_enter()
             MAINSTATUS.current.rotary_isr_enter()
-            log.info(
-                f"CHANGED!\tprevious: {MAINSTATUS.previous.name}\tcurrent: {MAINSTATUS.current.name}")
+            log.debug(
+                f"CHANGED!\tprevious: {MAINSTATUS.previous.name}\tCURRENT: {MAINSTATUS.current.name}")
             MAINSTATUS.previous = MAINSTATUS.current
 
         direction = MAINSTATUS.current.rotary.refresh()
