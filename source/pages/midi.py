@@ -14,7 +14,7 @@ PIN_ROTARY_2 = 13
 
 def forward_routine(state_obj):
     log.info("pressed midi forward")
-    item = state_obj.item
+    item = state_obj.current
 
     if item.chidren[0]:
         state_obj.previous = item
@@ -23,7 +23,7 @@ def forward_routine(state_obj):
 
 def backward_routine(state_obj):
     log.info("pressed midi backward")
-    item = state_obj.item
+    item = state_obj.current
 
     if item.parent:
         state_obj.previous = item
