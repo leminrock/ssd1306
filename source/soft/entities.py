@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
 from common import rock_logger as log
+from common.cfg import MAINSTATUS
 from hard.hardware import RockButton, EncoderEC11
 
 log.config(__name__)
@@ -104,8 +105,8 @@ class Item(ABC):
         """
         active button routine interrupts
         """
-        self.forward.isr(self._right_func, self)
-        self.backward.isr(self._left_func, self)
+        self.forward.isr(self._right_func, MAINSTATUS)
+        self.backward.isr(self._left_func, MAINSTATUS)
 
     def isr_exit(self):
         """
@@ -176,25 +177,3 @@ class ItemApp(Item):
 
     def draw(self):
         pass
-
-
-class Status():
-    def __init__(self, current=None, previous=None):
-        self._current = current
-        self._previous = previous
-
-    @property
-    def current(self):
-        return self._current
-
-    @property
-    def previous(self):
-        return self._previous
-
-    @current.setter
-    def current(self, item):
-        self._current = item
-
-    @previous.setter
-    def previous(self, item):
-        self._previous = item
