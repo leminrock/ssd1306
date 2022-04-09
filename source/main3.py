@@ -30,6 +30,9 @@ if __name__ == '__main__':
             log.info(
                 f"CHANGED!\tmainstatus.previous: {mainstatus.previous.name}\tcurrent: {mainstatus.current.name}")
             mainstatus.previous = mainstatus.current
+        else:
+            log.info(
+                f"UNCHANGED!\tmainstatus.previous: {mainstatus.previous.name}\tcurrent: {mainstatus.current.name}")
 
         direction = mainstatus.current.rotary.refresh()
 
