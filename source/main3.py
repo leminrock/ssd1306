@@ -35,4 +35,4 @@ if __name__ == '__main__':
 
         if direction:
             # current_page.update(direction)
-            log.INFO(f"direction:\t{direction}")
+            log.info(f"direction:\t{direction}")
