@@ -13,7 +13,6 @@ PIN_ROTARY_2 = 13
 
 
 def forward_routine(state_obj):
-    global MAINSTATUS
     log.info("pressed mainmenu forward")
     log.info("current:", MAINSTATUS.current.name)
     item = MAINSTATUS.current
@@ -24,7 +23,6 @@ def forward_routine(state_obj):
 
 
 def backward_routine(state_obj):
-    global MAINSTATUS
     log.info("pressed mainmenu backward")
     item = MAINSTATUS.current
 
