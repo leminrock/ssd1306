@@ -18,7 +18,7 @@ def forward_routine(state_obj):
     item = MAINSTATUS.current
     print(item.children[0], item.children[0].name)
 
-    if MAINSTATUS.current.chidren[0]:
+    if MAINSTATUS:
         print("ha senso")
     else:
         print("non ha senso")
