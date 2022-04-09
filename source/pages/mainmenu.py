@@ -22,7 +22,7 @@ def forward_routine(state_obj):
         #log.debug(f"select child from: {MAINSTATUS.current.children_names}")
         log.info("OK")
         MAINSTATUS.previous = item
-        MAINSTATUS.current = item.chidren[0]
+        #MAINSTATUS.current = item.chidren[0]
         #log.info(f"previous: {MAINSTATUS.previous}")
         #log.info(f"current: {MAINSTATUS.current}")
 
