@@ -1,6 +1,7 @@
 from soft.entities import ItemMenu
 from common import rock_logger as log
 from common.cfg import MAINSTATUS
+import copy
 
 log.config(__name__)
 
@@ -20,20 +21,12 @@ def forward_routine(state_obj):
 
     if item.children[0]:
         print(f"ha senso: {item.children[0]}")
-        MAINSTATUS.current = item.chidren[0]
-        MAINSTATUS.previous = item
+        MAINSTATUS.current = copy.copy(item.chidren[0])
+        MAINSTATUS.previous = copy.copy(item)
         log.info(f"previous: {MAINSTATUS.previous}")
         log.info(f"current: {MAINSTATUS.current}")
     else:
         print("non ha senso")
-
-    # if item.chidren[0]:
-    #log.debug(f"select child from: {MAINSTATUS.current.children_names}")
-    # print("OK")
-    #MAINSTATUS.previous = item
-    #MAINSTATUS.current = item.chidren[0]
-    #log.info(f"previous: {MAINSTATUS.previous}")
-    #log.info(f"current: {MAINSTATUS.current}")
 
 
 def backward_routine(state_obj):
