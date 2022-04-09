@@ -1,8 +1,6 @@
 # Nodes
-from pages import mainmenu, webserver
-#from soft.entities import Status
 from common.cfg import MAINSTATUS
-
+from pages import mainmenu, webserver
 
 """
 MAINMENU = ItemMenu('MAIN')
