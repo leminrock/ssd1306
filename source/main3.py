@@ -3,7 +3,6 @@
 #import time
 #from pathlib import Path
 #from soft.entities import ItemMenu, ItemPatch, ItemApp, Status
-from pip import main
 from pages import index
 from common import rock_logger as log
 
