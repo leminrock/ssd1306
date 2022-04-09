@@ -41,3 +41,4 @@ if __name__ == '__main__':
             # current_page.update(direction)
             log.info(f"current: {MAINSTATUS.current.name}")
             log.info(f"direction:\t{direction}")
+            log.info(f"current children: {MAINSTATUS.children_names}")

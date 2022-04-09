@@ -16,7 +16,7 @@ def forward_routine(state_obj):
     global MAINSTATUS
     log.info("pressed mainmenu forward")
     log.info("current:", MAINSTATUS.current.name)
-    item = MAINSTATUS.current  # state_obj.current
+    item = MAINSTATUS.current
 
     if item.chidren[0]:
         MAINSTATUS.previous = item
