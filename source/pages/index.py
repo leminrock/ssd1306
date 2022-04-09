@@ -12,6 +12,7 @@ PATCHES = patches.PATCHES
 
 mainmenu = [PATCHES, HOTSPOT, WIFI, WEBSERVER, MIDI]
 MAINMENU.children = mainmenu
+PATCHES.children = patches.ITEMPATCH
 
 for item in mainmenu:
     item.parent = MAINMENU
