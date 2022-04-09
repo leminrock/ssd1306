@@ -1,31 +1,22 @@
 # Nodes
 from common.cfg import MAINSTATUS
-from pages import mainmenu, webserver
+from pages import mainmenu, webserver, hotspot, wifi, midi, patches
 
-"""
-MAINMENU = ItemMenu('MAIN')
-WEBSERVER = ItemMenu('ACTIVE WEBSERVER', parent=MAINMENU)
-MIDI = ItemApp('MIDI', parent=MAINMENU)
-HOTSPOT = ItemApp('ACTIVE HOTSPOT', parent=MAINMENU)
-WIFI = ItemApp('START WIFI', parent=MAINMENU)
-PATCHES = ItemPatch('PATCHES', parent=MAINMENU)
-"""
-
-"""
-MAINMENU = mainmenu.MAINMENU
-WEBSERVER = webserver.WEBSERVER
-
-MAINMENU.children = WEBSERVER
-
-mainstatus = Status(current=MAINMENU)
-"""
 
 MAINMENU = mainmenu.MAINMENU
 WEBSERVER = webserver.WEBSERVER
+HOTSPOT = hotspot.HOTSPOT
+WIFI = wifi.WIFI
+MIDI = midi.MIDI
+PATCHES = patches.PATCHES
 
-MAINMENU.children = WEBSERVER
-WEBSERVER.parent = MAINMENU
+mainmenu = [PATCHES, HOTSPOT, WIFI, WEBSERVER, MIDI]
+MAINMENU.children = mainmenu
 
+for item in mainmenu:
+    item.parent = MAINMENU
+
+# set initial state
 MAINSTATUS.current = MAINMENU
 MAINSTATUS.current.isr_enter()
 MAINSTATUS.current.rotary_isr_enter()
