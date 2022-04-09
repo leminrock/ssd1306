@@ -9,14 +9,6 @@ from common import rock_logger as log
 
 log.config(__name__)
 
-"""
-PIN_FORWARD = 8
-PIN_BACKWARD = 10
-PIN_ROTARY_1 = 11
-PIN_ROTARY_2 = 13
-"""
-#PATCHESPATH = Path('../patches').resolve()
-
 # current Node
 log.debug(f"current: {MAINSTATUS.current}")
 log.debug(f"previous: {MAINSTATUS.previous}")
