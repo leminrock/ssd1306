@@ -1,9 +1,6 @@
 #!/usr/bin/env python3
 
-#import time
-#from pathlib import Path
-#from soft.entities import ItemMenu, ItemPatch, ItemApp, Status
-from pages import index
+#from pages import index
 from common.cfg import MAINSTATUS
 from common import rock_logger as log
 
