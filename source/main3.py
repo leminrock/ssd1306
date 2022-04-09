@@ -17,6 +17,7 @@ PIN_ROTARY_2 = 13
 
 # current Node
 mainstatus = index.MAINSTATUS
+print("current:", mainstatus.current)
 print("previous:", mainstatus.previous)
 mainstatus.current.isr_enter()
 mainstatus.current.rotary_isr_enter()
