@@ -15,5 +15,6 @@ PATCHES = ItemPatch('PATCHES', parent=MAINMENU)
 MAINMENU = mainmenu.MAINMENU
 WEBSERVER = webserver.WEBSERVER
 
+MAINMENU.children = WEBSERVER
 
 mainstatus = Status(current=MAINMENU)

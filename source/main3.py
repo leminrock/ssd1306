@@ -15,67 +15,7 @@ PIN_ROTARY_2 = 13
 
 #PATCHESPATH = Path('../patches').resolve()
 
-
-# routines
-
-"""
-def forward_routine(item):
-    global current
-    global previous
-
-    log.info("pressed forward")
-
-    if item.children[0]:
-        mainstatus.previous = item
-        current = item.children[0]
-
-
-def backward_routine(item):
-    global current
-    global previous
-
-    if item.parent:
-        mainstatus.previous = item
-        current = item.parent
-"""
-
-# Nodes
-MAINMENU = ItemMenu('MAIN')
-WEBSERVER = ItemMenu('START WEBSERVER', parent=MAINMENU)
-MIDI = ItemApp('MIDI', parent=MAINMENU)
-HOTSPOT = ItemApp('START HOTSPOT', parent=MAINMENU)
-WIFI = ItemApp('START WIFI', parent=MAINMENU)
-PATCHES = ItemPatch('PATCHES', parent=MAINMENU)
-
-# Relations
-MAINMENU.children = [PATCHES, WEBSERVER, MIDI, HOTSPOT, WIFI]
-
-# ISR routines registration
-
-"""MAINMENU.register_right_routine(PIN_FORWARD, forward_routine)
-MAINMENU.register_left_routine(PIN_BACKWARD, backward_routine)
-MAINMENU.register_rotary(PIN_ROTARY_1, PIN_ROTARY_2)
-PATCHES.register_right_routine(PIN_FORWARD, forward_routine)
-PATCHES.register_left_routine(PIN_BACKWARD, backward_routine)
-PATCHES.register_rotary(PIN_ROTARY_1, PIN_ROTARY_2)
-WEBSERVER.register_right_routine(PIN_FORWARD, forward_routine)
-WEBSERVER.register_left_routine(PIN_BACKWARD, backward_routine)
-HOTSPOT.register_right_routine(PIN_FORWARD, forward_routine)
-HOTSPOT.register_left_routine(PIN_BACKWARD, backward_routine)
-WIFI.register_right_routine(PIN_FORWARD, forward_routine)
-WIFI.register_left_routine(PIN_BACKWARD, backward_routine)
-"""
-
 # current Node
-"""
-current = MAINMENU
-previous = None
-
-current.isr_enter()
-current.rotary_isr_enter()
-"""
-
-#mainstatus = Status(current=MAINMENU)
 mainstatus = index.mainstatus
 mainstatus.current.isr_enter()
 mainstatus.current.rotary_isr_enter()
