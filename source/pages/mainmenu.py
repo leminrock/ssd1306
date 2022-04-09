@@ -16,6 +16,7 @@ def forward_routine(state_obj):
     log.info("pressed mainmenu forward")
     log.info(f"current: {MAINSTATUS.current.name}")
     item = MAINSTATUS.current
+    print(item.children)
 
     if item.chidren[0]:
         #log.debug(f"select child from: {MAINSTATUS.current.children_names}")
