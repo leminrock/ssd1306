@@ -16,14 +16,14 @@ PIN_ROTARY_2 = 13
 def forward_routine(state_obj):
     log.info("pressed mainmenu forward")
     log.info(f"current: {MAINSTATUS.current.name}")
-    item = copy.copy(MAINSTATUS.current)
-    print(item.children[0], item.children[0].name)
+    #item = copy.copy(MAINSTATUS.current)
+    #print(item.children[0], item.children[0].name)
 
-    if item.children[0]:
-        MAINSTATUS.empty()
-        print(f"ha senso: {item.children[0]}")
-        MAINSTATUS.current = item.chidren[0]
-        MAINSTATUS.previous = item
+    if MAINSTATUS.current.children[0]:
+        # MAINSTATUS.empty()
+        #print(f"ha senso: {item.children[0]}")
+        MAINSTATUS.current = MAINSTATUS.current.chidren[0]
+        MAINSTATUS.previous = MAINSTATUS.current
         log.info(f"previous: {MAINSTATUS.previous}")
         log.info(f"current: {MAINSTATUS.current}")
     else:
