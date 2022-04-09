@@ -16,7 +16,7 @@ PIN_ROTARY_2 = 13
 #PATCHESPATH = Path('../patches').resolve()
 
 # current Node
-mainstatus = index.mainstatus
+mainstatus = index.MAINSTATUS
 mainstatus.current.isr_enter()
 mainstatus.current.rotary_isr_enter()
 
