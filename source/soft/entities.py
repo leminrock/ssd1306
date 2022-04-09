@@ -1,6 +1,5 @@
 from abc import ABC, abstractmethod
 from common import rock_logger as log
-from common.cfg import MAINSTATUS
 from hard.hardware import RockButton, EncoderEC11
 
 log.config(__name__)
@@ -85,29 +84,30 @@ class Item(ABC):
     def set_leaf(self, leaf=True):
         self._leaf = leaf
 
-    def register_right_routine(self, pin, func):
+    def register_right_routine(self, pin, func, arg):
         """
         set isr_routine for right button
         """
         self._right_pin = pin
         self.forward = RockButton(pin)
         self._right_func = func
+        self._right_arg = arg
 
-    def register_left_routine(self, pin, func):
+    def register_left_routine(self, pin, func, arg):
         """
         set isr_routine for left button
         """
         self._left_pin = pin
         self.backward = RockButton(pin)
         self._left_func = func
+        self._left_arg = arg
 
     def isr_enter(self):
         """
         active button routine interrupts
         """
-        log.info(f"current name: {MAINSTATUS.current.name}")
-        self.forward.isr(self._right_func, self)
-        self.backward.isr(self._left_func, self)
+        self.forward.isr(self._right_func, self._right_arg)
+        self.backward.isr(self._left_func, self._left_arg)
 
     def isr_exit(self):
         """
