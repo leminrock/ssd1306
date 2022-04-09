@@ -21,7 +21,7 @@ def forward_routine(state_obj):
     if item.children[0]:
         print(f"ha senso: {item.children[0]}")
         MAINSTATUS.previous = item
-        MAINSTATUS.current = item.chidren[0]
+        #MAINSTATUS.current = item.chidren[0]
         log.info(f"previous: {MAINSTATUS.previous}")
         log.info(f"current: {MAINSTATUS.current}")
     else:
