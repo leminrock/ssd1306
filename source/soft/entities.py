@@ -179,7 +179,7 @@ class ItemApp(Item):
         pass
 
 
-class Status():
+class Status:
     def __init__(self, current=None, previous=None):
         self._current = current
         self._previous = previous
