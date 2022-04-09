@@ -28,11 +28,12 @@ if __name__ == '__main__':
             mainstatus.current.isr_enter()
             mainstatus.current.rotary_isr_enter()
             log.info(
-                f"CHANGED!\tmainstatus.previous: {mainstatus.previous.name}\tcurrent: {mainstatus.current.name}")
+                f"CHANGED!\tprevious: {mainstatus.previous.name}\tcurrent: {mainstatus.current.name}")
             mainstatus.previous = mainstatus.current
 
         direction = mainstatus.current.rotary.refresh()
 
         if direction:
             # current_page.update(direction)
+            log.info(f"current: {mainstatus.current.name}")
             log.info(f"direction:\t{direction}")
