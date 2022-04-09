@@ -17,6 +17,8 @@ def forward_routine(state_obj):
     log.info(f"current: {MAINSTATUS.current.name}")
     item = MAINSTATUS.current
 
+    log.debug(f"children: {MAINSTATUS.current.children_names}")
+
     if item.chidren[0]:
         MAINSTATUS.previous = item
         MAINSTATUS.current = item.chidren[0]
