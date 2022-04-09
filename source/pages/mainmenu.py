@@ -24,7 +24,7 @@ def forward_routine(state_obj):
         #print(f"ha senso: {item.children[0]}")
         MAINSTATUS.previous = MAINSTATUS.current
         #MAINSTATUS.current = copy.deepcopy(MAINSTATUS.current.chidren[0])
-        log.warn(f"child choosen: {MAINSTATUS.previous.chidren[0]}")
+        log.warn(f"child choosen: {MAINSTATUS.current.children[0]}")
         log.info(f"previous: {MAINSTATUS.previous}")
         log.info(f"current: {MAINSTATUS.current}")
     else:
