@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-#from pages import index
+from pages import index
 from common.cfg import MAINSTATUS
 from common import rock_logger as log
 
