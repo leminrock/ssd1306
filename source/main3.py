@@ -23,7 +23,6 @@ log.debug(f"previous: {MAINSTATUS.previous}")
 
 if __name__ == '__main__':
     while True:
-        """
         if MAINSTATUS.previous and (MAINSTATUS.previous != MAINSTATUS.current):
             MAINSTATUS.previous.isr_exit()
             MAINSTATUS.previous.rotary_isr_exit()
@@ -32,9 +31,7 @@ if __name__ == '__main__':
             log.info(
                 f"CHANGED!\tprevious: {MAINSTATUS.previous.name}\tcurrent: {MAINSTATUS.current.name}")
             MAINSTATUS.previous = MAINSTATUS.current
-        """
-        if MAINSTATUS.previous:
-            log.info(f"{MAINSTATUS.previous}")
+
         direction = MAINSTATUS.current.rotary.refresh()
 
         if direction:
