@@ -1,6 +1,5 @@
 from soft.entities import ItemMenu
 from common import rock_logger as log
-from source.main3 import WEBSERVER
 
 log.config(__name__)
 
