@@ -4,6 +4,7 @@
 #from pathlib import Path
 #from soft.entities import ItemMenu, ItemPatch, ItemApp, Status
 from pages import index
+from common.cfg import MAINSTATUS
 from common import rock_logger as log
 
 log.config(__name__)
@@ -16,30 +17,30 @@ PIN_ROTARY_2 = 13
 #PATCHESPATH = Path('../patches').resolve()
 
 # current Node
-mainstatus = index.MAINSTATUS
+#MAINSTATUS = index.MAINSTATUS
 
-log.debug(f"current: {mainstatus.current}")
-log.debug(f"previous: {mainstatus.previous}")
+log.debug(f"current: {MAINSTATUS.current}")
+log.debug(f"previous: {MAINSTATUS.previous}")
 
-mainstatus.current.isr_enter()
-mainstatus.current.rotary_isr_enter()
+MAINSTATUS.current.isr_enter()
+MAINSTATUS.current.rotary_isr_enter()
 
-assert mainstatus.previous != mainstatus.current
+assert MAINSTATUS.previous != MAINSTATUS.current
 
 if __name__ == '__main__':
     while True:
-        if mainstatus.previous and (mainstatus.previous != mainstatus.current):
-            mainstatus.previous.isr_exit()
-            mainstatus.previous.rotary_isr_exit()
-            mainstatus.current.isr_enter()
-            mainstatus.current.rotary_isr_enter()
+        if MAINSTATUS.previous and (MAINSTATUS.previous != MAINSTATUS.current):
+            MAINSTATUS.previous.isr_exit()
+            MAINSTATUS.previous.rotary_isr_exit()
+            MAINSTATUS.current.isr_enter()
+            MAINSTATUS.current.rotary_isr_enter()
             log.info(
-                f"CHANGED!\tprevious: {mainstatus.previous.name}\tcurrent: {mainstatus.current.name}")
-            mainstatus.previous = mainstatus.current
+                f"CHANGED!\tprevious: {MAINSTATUS.previous.name}\tcurrent: {MAINSTATUS.current.name}")
+            MAINSTATUS.previous = MAINSTATUS.current
 
-        direction = mainstatus.current.rotary.refresh()
+        direction = MAINSTATUS.current.rotary.refresh()
 
         if direction:
             # current_page.update(direction)
-            log.info(f"current: {mainstatus.current.name}")
+            log.info(f"current: {MAINSTATUS.current.name}")
             log.info(f"direction:\t{direction}")
