@@ -105,6 +105,7 @@ class Item(ABC):
         """
         active button routine interrupts
         """
+        log.info(f"current name: {MAINSTATUS.current.name}")
         self.forward.isr(self._right_func, MAINSTATUS)
         self.backward.isr(self._left_func, MAINSTATUS)
 
