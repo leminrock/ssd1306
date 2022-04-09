@@ -20,6 +20,8 @@ def forward_routine(state_obj):
 
     if MAINSTATUS.current.chidren[0]:
         print("ha senso")
+    else:
+        print("non ha senso")
 
     # if item.chidren[0]:
     #log.debug(f"select child from: {MAINSTATUS.current.children_names}")
