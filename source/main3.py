@@ -3,29 +3,26 @@
 #import time
 #from pathlib import Path
 #from soft.entities import ItemMenu, ItemPatch, ItemApp, Status
-from pages import index
+#from pages import index
 from common.cfg import MAINSTATUS
 from common import rock_logger as log
 
 log.config(__name__)
 
+"""
 PIN_FORWARD = 8
 PIN_BACKWARD = 10
 PIN_ROTARY_1 = 11
 PIN_ROTARY_2 = 13
-
+"""
 #PATCHESPATH = Path('../patches').resolve()
 
 # current Node
-#MAINSTATUS = index.MAINSTATUS
-
 log.debug(f"current: {MAINSTATUS.current}")
 log.debug(f"previous: {MAINSTATUS.previous}")
 
 MAINSTATUS.current.isr_enter()
 MAINSTATUS.current.rotary_isr_enter()
-
-assert MAINSTATUS.previous != MAINSTATUS.current
 
 if __name__ == '__main__':
     while True:

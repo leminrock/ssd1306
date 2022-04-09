@@ -1,5 +1,6 @@
 from soft.entities import ItemMenu
 from common import rock_logger as log
+from common.cfg import MAINSTATUS
 
 log.config(__name__)
 
@@ -13,21 +14,21 @@ PIN_ROTARY_2 = 13
 
 def forward_routine(state_obj):
     log.info("pressed mainmenu forward")
-    log.info("current:", state_obj.current.name)
-    item = state_obj.current
+    log.info("current:", MAINSTATUS.current.name)
+    item = MAINSTATUS.current  # state_obj.current
 
     if item.chidren[0]:
-        state_obj.previous = item
-        state_obj.current = item.chidren[0]
+        MAINSTATUS.previous = item
+        MAINSTATUS.current = item.chidren[0]
 
 
 def backward_routine(state_obj):
     log.info("pressed mainmenu backward")
-    item = state_obj.current
+    item = MAINSTATUS.current
 
     if item.parent:
-        state_obj.previous = item
-        state_obj.current = item.parent
+        MAINSTATUS.previous = item
+        MAINSTATUS.current = item.parent
 
 
 MAINMENU = ItemMenu('MAIN')
