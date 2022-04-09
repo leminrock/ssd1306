@@ -3,6 +3,7 @@
 #import time
 #from pathlib import Path
 #from soft.entities import ItemMenu, ItemPatch, ItemApp, Status
+from pip import main
 from pages import index
 from common import rock_logger as log
 
@@ -17,6 +18,7 @@ PIN_ROTARY_2 = 13
 
 # current Node
 mainstatus = index.MAINSTATUS
+print("previous:", mainstatus.previous)
 mainstatus.current.isr_enter()
 mainstatus.current.rotary_isr_enter()
 
