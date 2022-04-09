@@ -1,5 +1,7 @@
 from soft.entities import ItemMenu
 from common import rock_logger as log
+from common.cfg import MAINSTATUS
+
 
 log.config(__name__)
 
@@ -12,21 +14,26 @@ PIN_ROTARY_2 = 13
 
 
 def forward_routine(state_obj):
-    log.info("pressed webserver forward")
-    item = state_obj.current
+    log.info("pressed mainmenu forward")
+    log.info(f"current: {MAINSTATUS.current.name}")
+    item = MAINSTATUS.current
 
     if item.chidren[0]:
-        state_obj.previous = item
-        state_obj.current = item.chidren[0]
+        log.debug(f"select child from: {MAINSTATUS.current.children_names}")
+        MAINSTATUS.previous = item
+        MAINSTATUS.current = item.chidren[0]
+        #log.info(f"previous: {MAINSTATUS.previous.name}")
+        #log.info(f"current: {MAINSTATUS.current.name}")
 
 
 def backward_routine(state_obj):
-    log.info("pressed webserver backward")
-    item = state_obj.current
+    log.info("pressed mainmenu backward")
+    log.info(f"current: {MAINSTATUS.current.name}")
+    item = MAINSTATUS.current
 
     if item.parent:
-        state_obj.previous = item
-        state_obj.current = item.parent
+        MAINSTATUS.previous = item
+        MAINSTATUS.current = item.parent
 
 
 WEBSERVER = ItemMenu('START WEBSERVER')
