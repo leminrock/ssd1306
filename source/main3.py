@@ -24,6 +24,8 @@ log.debug(f"previous: {mainstatus.previous}")
 mainstatus.current.isr_enter()
 mainstatus.current.rotary_isr_enter()
 
+assert mainstatus.previous != mainstatus.current
+
 if __name__ == '__main__':
     while True:
         if mainstatus.previous and (mainstatus.previous != mainstatus.current):
