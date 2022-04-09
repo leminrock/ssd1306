@@ -16,6 +16,9 @@ MAINMENU.children = mainmenu
 for item in mainmenu:
     item.parent = MAINMENU
 
+for item in patches.ITEMPATCH:
+    item.parent = PATCHES
+
 # set initial state
 MAINSTATUS.current = MAINMENU
 MAINSTATUS.current.isr_enter()
