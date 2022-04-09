@@ -27,3 +27,5 @@ MAINMENU.children = WEBSERVER
 WEBSERVER.parent = MAINMENU
 
 MAINSTATUS.current = MAINMENU
+MAINSTATUS.current.isr_enter()
+MAINSTATUS.current.rotary_isr_enter()

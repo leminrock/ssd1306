@@ -21,9 +21,6 @@ PIN_ROTARY_2 = 13
 log.debug(f"current: {MAINSTATUS.current}")
 log.debug(f"previous: {MAINSTATUS.previous}")
 
-MAINSTATUS.current.isr_enter()
-MAINSTATUS.current.rotary_isr_enter()
-
 if __name__ == '__main__':
     while True:
         if MAINSTATUS.previous and (MAINSTATUS.previous != MAINSTATUS.current):
