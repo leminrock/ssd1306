@@ -19,7 +19,7 @@ def forward_routine(state_obj):
     print(item.children[0], item.children[0].name)
 
     if item.children[0]:
-        print(f"ha senso: {item.children}")
+        print(f"ha senso: {item.children[0]}")
     else:
         print("non ha senso")
 
