@@ -18,3 +18,7 @@ class Status:
     @previous.setter
     def previous(self, item):
         self._previous = item
+
+    def empty(self):
+        self.current = None
+        self.previous = None
