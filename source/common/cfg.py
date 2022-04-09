@@ -1,3 +1,3 @@
-from soft.entities import Status
+from common.status import Status
 
 MAINSTATUS = Status()
