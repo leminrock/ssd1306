@@ -3,7 +3,7 @@
 #import time
 #from pathlib import Path
 #from soft.entities import ItemMenu, ItemPatch, ItemApp, Status
-#from pages import index
+from pages import index
 from common.cfg import MAINSTATUS
 from common import rock_logger as log
 
@@ -32,9 +32,9 @@ if __name__ == '__main__':
                 f"CHANGED!\tprevious: {MAINSTATUS.previous.name}\tcurrent: {MAINSTATUS.current.name}")
             MAINSTATUS.previous = MAINSTATUS.current
 
-        #direction = MAINSTATUS.current.rotary.refresh()
+        direction = MAINSTATUS.current.rotary.refresh()
 
-        if MAINSTATUS.current.rotary.refresh():
+        if direction:
             # current_page.update(direction)
             log.info(f"current: {MAINSTATUS.current.name}")
             log.info(f"direction:\t{direction}")
