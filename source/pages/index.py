@@ -2,7 +2,7 @@
 from common.cfg import MAINSTATUS
 from pages import mainmenu, webserver, hotspot, wifi, midi, patches
 
-
+# nodes
 MAINMENU = mainmenu.MAINMENU
 WEBSERVER = webserver.WEBSERVER
 HOTSPOT = hotspot.HOTSPOT
@@ -10,7 +10,9 @@ WIFI = wifi.WIFI
 MIDI = midi.MIDI
 PATCHES = patches.PATCHES
 
+# relations
 mainmenu = [PATCHES, HOTSPOT, WIFI, WEBSERVER, MIDI]
+
 MAINMENU.children = mainmenu
 PATCHES.children = patches.ITEMPATCH
 

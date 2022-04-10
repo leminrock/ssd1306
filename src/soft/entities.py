@@ -176,3 +176,11 @@ class ItemApp(Item):
 
     def draw(self):
         pass
+
+
+class ItemWebServer(Item):
+    def update_name(self):
+        return self.name
+
+    def draw(self):
+        pass
