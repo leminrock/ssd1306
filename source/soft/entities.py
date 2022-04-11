@@ -132,11 +132,6 @@ class Item(ABC):
     def rotary_refresh(self):
         pass
 
-
-    # @abstractmethod
-    # def register_rotary_routine(self, pin1=None, pin2=None, func=None):
-    #    pass
-
     @abstractmethod
     def update_name(self):
         """
@@ -191,7 +186,7 @@ class ItemPatch(Item):
     def command(self):
         self._func(*self._args)
 
-    def register_rotary(self, pin1, pin2):
+    def register_rotary(self):
         pass
 
     def rotary_isr_enter(self):
