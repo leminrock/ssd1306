@@ -116,17 +116,21 @@ class Item(ABC):
         self.forward.isr_exit()
         self.backward.isr_exit()
 
+    @abstractmethod
     def register_rotary(self, pin1, pin2):
-        self.rotary = EncoderEC11(pin1, pin2)
+        pass
 
+    @abstractmethod
     def rotary_isr_enter(self):
-        self.rotary.isr()
+        pass
 
+    @abstractmethod
     def rotary_isr_exit(self):
-        self.rotary.isr_exit()
+        pass
 
+    @abstractmethod
     def rotary_refresh(self):
-        self.rotary.refresh()
+        pass
 
 
     # @abstractmethod
@@ -152,6 +156,18 @@ class ItemMenu(Item):
     def draw(self):
         pass
 
+    def register_rotary(self, pin1, pin2):
+        self.rotary = EncoderEC11(pin1, pin2)
+
+    def rotary_isr_enter(self):
+        self.rotary.isr()
+
+    def rotary_isr_exit(self):
+        self.rotary.isr_exit()
+
+    def rotary_refresh(self):
+        self.rotary.refresh()
+
 
 class ItemPatch(Item):
     def update_name(self):
@@ -174,6 +190,9 @@ class ItemPatch(Item):
 
     def command(self):
         self._func(*self._args)
+
+    def register_rotary(self, pin1, pin2):
+        pass
 
     def rotary_isr_enter(self):
         pass
