@@ -11,10 +11,10 @@ log.config(__name__)
 
 PATCHESPATH = Path('../patches').resolve()
 
-PATCHES = ItemMenu('PATCHES')
-PATCHES.register_right_routine(PIN_FORWARD, rtn.forward_routine, MAINSTATUS)
-PATCHES.register_left_routine(PIN_BACKWARD, rtn.backward_routine, MAINSTATUS)
-PATCHES.register_rotary(PIN_ROTARY_1, PIN_ROTARY_2)
+PATCH = ItemMenu('PATCH')
+PATCH.register_right_routine(PIN_FORWARD, rtn.forward_routine, MAINSTATUS)
+PATCH.register_left_routine(PIN_BACKWARD, rtn.backward_routine, MAINSTATUS)
+PATCH.register_rotary(PIN_ROTARY_1, PIN_ROTARY_2)
 
 ITEMPATCH = []
 

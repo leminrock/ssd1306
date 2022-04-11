@@ -1,6 +1,9 @@
 # Nodes
 from common.cfg import MAINSTATUS
-from pages import mainmenu, webserver, hotspot, wifi, midi, patches
+#from common import graph
+from pages import mainmenu, patch, webserver, hotspot, wifi, midi
+
+#graph.init()
 
 # nodes
 MAINMENU = mainmenu.MAINMENU
@@ -8,19 +11,21 @@ WEBSERVER = webserver.WEBSERVER
 HOTSPOT = hotspot.HOTSPOT
 WIFI = wifi.WIFI
 MIDI = midi.MIDI
-PATCHES = patches.PATCHES
+PATCH = patch.PATCH
 
 # relations
-mainmenu = [PATCHES, HOTSPOT, WIFI, WEBSERVER, MIDI]
+mainmenu = [PATCH, HOTSPOT, WIFI, WEBSERVER, MIDI]
 
 MAINMENU.children = mainmenu
-PATCHES.children = patches.ITEMPATCH
+PATCH.children = patch.ITEMPATCH
+
+#graph.add_children(MAINMENU, [PATCH, HOTSPOT, WIFI, WEBSERVER, MIDI])
 
 for item in mainmenu:
     item.parent = MAINMENU
 
-for item in patches.ITEMPATCH:
-    item.parent = PATCHES
+for item in patch.ITEMPATCH:
+    item.parent = PATCH
 
 # set initial state
 MAINSTATUS.current = MAINMENU
