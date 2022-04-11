@@ -120,12 +120,14 @@ class Item(ABC):
         self.rotary = EncoderEC11(pin1, pin2)
 
     def rotary_isr_enter(self):
-        if self.rotary:
-            self.rotary.isr()
+        self.rotary.isr()
 
     def rotary_isr_exit(self):
-        if self.rotary:
-            self.rotary.isr_exit()
+        self.rotary.isr_exit()
+
+    def rotary_refresh(self):
+        self.rotary.refresh()
+
 
     # @abstractmethod
     # def register_rotary_routine(self, pin1=None, pin2=None, func=None):
@@ -177,6 +179,9 @@ class ItemPatch(Item):
         pass
 
     def rotary_isr_exit(self):
+        pass
+
+    def rotary_refresh(self):
         pass
 
 
