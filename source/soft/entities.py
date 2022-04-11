@@ -123,7 +123,8 @@ class Item(ABC):
         self.rotary.isr()
 
     def rotary_isr_exit(self):
-        self.rotary.isr_exit()
+        if self.rotary:
+            self.rotary.isr_exit()
 
     # @abstractmethod
     # def register_rotary_routine(self, pin1=None, pin2=None, func=None):
