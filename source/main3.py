@@ -22,7 +22,7 @@ if __name__ == '__main__':
             MAINSTATUS.previous = MAINSTATUS.current
 
         direction = MAINSTATUS.current.rotary_refresh()
-        log.warn(f"{direction}")
+        #log.warn(f"{direction}")
 
         if direction:
             # current_page.update(direction)
