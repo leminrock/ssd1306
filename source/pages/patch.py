@@ -27,7 +27,6 @@ for _dir in sorted(dirs):
     itempatch = ItemPatch(_dir.stem)
     itempatch.register_right_routine(PIN_FORWARD, itempatch_forward_routine, MAINSTATUS)
     itempatch.register_left_routine(PIN_BACKWARD, rtn.backward_routine, MAINSTATUS)
-    itempatch.register_rotary(None, None)
     ITEMPATCH.append(itempatch)
     #patch.set_command(set_patch, path, JACKDSERVICE, PDSERVICE)
     #Graph.one_to_one(PATCHES, patch)
