@@ -173,6 +173,12 @@ class ItemPatch(Item):
     def command(self):
         self._func(*self._args)
 
+    def rotary_isr_enter(self):
+        pass
+
+    def rotary_isr_exit(self):
+        pass
+
 
 class ItemApp(Item):
     def update_name(self):
