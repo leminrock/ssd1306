@@ -120,7 +120,8 @@ class Item(ABC):
         self.rotary = EncoderEC11(pin1, pin2)
 
     def rotary_isr_enter(self):
-        self.rotary.isr()
+        if self.rotary:
+            self.rotary.isr()
 
     def rotary_isr_exit(self):
         if self.rotary:
