@@ -39,10 +39,9 @@ class EncoderEC11:
         self.pin2.isrExit()
 
     def refresh(self):
-        log.debug("CALL ROTARY")
         self.tick()
         new_pos = self.position
-
+        log.error(f"{new_pos}")
         if self.old_position != new_pos:
             self.old_position = new_pos
             return self.direction
