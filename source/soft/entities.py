@@ -161,7 +161,6 @@ class ItemMenu(Item):
         self.rotary.isr_exit()
 
     def rotary_refresh(self):
-        # log.debug(f"{self.rotary}")
         return self.rotary.refresh()
 
 
@@ -208,3 +207,20 @@ class ItemApp(Item):
     def draw(self):
         pass
 """
+
+
+class Children:
+    """position and selection menu manager"""
+    MAX_SIZE = 5
+
+    def __init__(self, size=1, pos=0):
+        self._size = size
+        self._pos = pos
+        self._max = len(size) - 1
+
+    def update(self, direction: int) -> int:
+        self._get_new_position(direction)
+
+    def _get_new_position(self, direction):
+        new_pos = self._pos + direction
+        self._pos = min(max(0, new_pos), self._max)
