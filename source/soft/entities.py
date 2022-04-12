@@ -116,6 +116,7 @@ class Item(ABC):
         self.forward.isr_exit()
         self.backward.isr_exit()
 
+    """
     @abstractmethod
     def register_rotary(self, pin1, pin2):
         pass
@@ -131,7 +132,7 @@ class Item(ABC):
     @abstractmethod
     def rotary_refresh(self):
         pass
-
+    """
     @abstractmethod
     def update_name(self):
         """
@@ -161,7 +162,7 @@ class ItemMenu(Item):
         self.rotary.isr_exit()
 
     def rotary_refresh(self):
-        log.debug(f"{self.rotary}")
+        # log.debug(f"{self.rotary}")
         self.rotary.refresh()
 
 
