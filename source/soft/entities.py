@@ -162,7 +162,7 @@ class ItemMenu(Item):
 
     def rotary_refresh(self):
         # log.debug(f"{self.rotary}")
-        self.rotary.refresh()
+        return self.rotary.refresh()
 
 
 class ItemPatch(Item):
