@@ -21,9 +21,8 @@ if __name__ == '__main__':
                 f"CHANGED!\tprevious: {MAINSTATUS.previous.name}\tCURRENT: {MAINSTATUS.current.name}")
             MAINSTATUS.previous = MAINSTATUS.current
 
-        log.debug(f"{MAINSTATUS.current.rotary.position}")
-        #direction = MAINSTATUS.current.rotary_refresh()
-        direction = MAINSTATUS.current.rotary.refresh()
+        log.debug(f"{MAINSTATUS.current.rotary.direction}")
+        direction = MAINSTATUS.current.rotary_refresh()
 
         if direction:
             # current_page.update(direction)
