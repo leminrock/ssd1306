@@ -43,7 +43,8 @@ class EncoderEC11:
         new_pos = self.position
         # log.error(f"{new_pos}\t{self.old_position}")
         if self.old_position != new_pos:
-            log.error(f"{new_pos}\t{self.old_position}")
+            log.error(
+                f"NEW:{new_pos}\tOLD:{self.old_position}\tDIR:{self.direction}")
             self.old_position = new_pos
             return self.direction
 
