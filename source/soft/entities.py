@@ -161,7 +161,7 @@ class ItemMenu(Item):
         self.rotary.isr_exit()
 
     def rotary_refresh(self):
-        log.debug(f"{self.rotary}")
+        # log.debug(f"{self.rotary}")
         self.rotary.refresh()
 
 
