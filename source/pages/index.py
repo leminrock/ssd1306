@@ -3,7 +3,7 @@ from common.cfg import MAINSTATUS
 #from common import graph
 from pages import mainmenu, patch, webserver, hotspot, wifi, midi
 
-#graph.init()
+# graph.init()
 
 # nodes
 MAINMENU = mainmenu.MAINMENU
