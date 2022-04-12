@@ -41,7 +41,7 @@ class EncoderEC11:
     def refresh(self):
         self.tick()
         new_pos = self.position
-        log.error(f"{new_pos}\t{self.old_position}")
+        # log.error(f"{new_pos}\t{self.old_position}")
         if self.old_position != new_pos:
             self.old_position = new_pos
             return self.direction

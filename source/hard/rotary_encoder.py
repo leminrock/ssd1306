@@ -18,7 +18,7 @@ KNOBDIR = [0, -1, 1, 0, 1, 0, 0, -1, -1, 0, 0, 1, 0, 1, -1, 0]
 
 
 def millis():
-    return int(time.time() * 1000)
+    return int(time.time() * 1000000)
 
 
 class RotaryEncoder(object):
