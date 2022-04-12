@@ -25,7 +25,7 @@ class EncoderEC11:
         self.pin1.dir(mraa.DIR_IN)
         self.pin2.dir(mraa.DIR_IN)
         self._enc = renc.RotaryEncoder(
-            self.pin1, self.pin2, renc.LATCHMODE['FOUR3'])
+            self.pin1, self.pin2, renc.LATCHMODE['FOUR0'])
 
     def tick(self):
         self._enc.tick()
