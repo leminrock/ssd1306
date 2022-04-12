@@ -11,10 +11,11 @@ class EncoderEC11:
         self.old_position = 0
         self.encode(pin1, pin2)
 
+    """
     @property
     def enc(self):
         return self._enc
-
+    """
     @property
     def direction(self):
         return self._enc.get_direction()
