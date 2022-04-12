@@ -12,7 +12,6 @@ log.debug(f"previous: {MAINSTATUS.previous}")
 
 if __name__ == '__main__':
     while True:
-        direction = MAINSTATUS.current.rotary_refresh()
         if MAINSTATUS.previous and (MAINSTATUS.previous != MAINSTATUS.current):
             MAINSTATUS.previous.isr_exit()
             MAINSTATUS.previous.rotary_isr_exit()
@@ -22,7 +21,7 @@ if __name__ == '__main__':
                 f"CHANGED!\tprevious: {MAINSTATUS.previous.name}\tCURRENT: {MAINSTATUS.current.name}")
             MAINSTATUS.previous = MAINSTATUS.current
 
-        #direction = MAINSTATUS.current.rotary_refresh()
+        direction = MAINSTATUS.current.rotary_refresh()
 
         if direction:
             # current_page.update(direction)
